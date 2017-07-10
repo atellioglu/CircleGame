@@ -15,6 +15,9 @@ import java.util.List;
  */
 public class GameState extends State {
     private List<Element> elements;
+    private Arrow userArrow;
+    private boolean paused = false,started=true;
+
     public GameState(GameStateManager gsm) {
         super(gsm);
 
@@ -22,10 +25,12 @@ public class GameState extends State {
 
     @Override
     protected void init() {
+        // TODO: 10/07/17 Harita burada olusturulacak
         elements = new ArrayList<Element>();
         ActiveCircle activeCircle =new ActiveCircle(new Vector3(100,100,0));
+        userArrow = new Arrow(activeCircle);
         elements.add(activeCircle);
-        elements.add(new Arrow(activeCircle));
+        elements.add(userArrow);
     }
 
     @Override
@@ -45,6 +50,11 @@ public class GameState extends State {
         }
     }
 
-
-
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if(!paused){
+            userArrow.detach();
+        }
+        return false;
+    }
 }

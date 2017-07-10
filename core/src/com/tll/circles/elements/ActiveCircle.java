@@ -12,7 +12,8 @@ import com.tll.circles.AssetManager;
  */
 public class ActiveCircle extends Element {
     public static final String TAG = "ActiveCircle";
-    private int mSpeed;
+    private int mSpeed = 200;
+    private int mRotationAngleSpeed = 5;
     private Color mColor = Color.BLACK;
     private float mTimeout;
 
@@ -31,7 +32,10 @@ public class ActiveCircle extends Element {
         return mSprite.getY();
     }
     public int getSpeed(){
-        return 3;
+        return mSpeed;
+    }
+    public int getRotationAngleSpeed(){
+        return mRotationAngleSpeed;
     }
     public float getWidth(){
         return mSprite.getWidth();
