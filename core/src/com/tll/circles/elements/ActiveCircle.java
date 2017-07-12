@@ -12,10 +12,19 @@ import com.tll.circles.AssetManager;
  */
 public class ActiveCircle extends Element {
     public static final String TAG = "ActiveCircle";
-    private int mSpeed = 200;
-    private int mRotationAngleSpeed = 5;
+    private int mSpeed = 50;
+    private int mRotationAngleSpeed = 3;
     private Color mColor = Color.BLACK;
     private float mTimeout;
+    private boolean endCircle;
+
+    public boolean isEndCircle() {
+        return endCircle;
+    }
+
+    public void setEndCircle(boolean endCircle) {
+        this.endCircle = endCircle;
+    }
 
     public ActiveCircle(Size size,Vector3 position,Color color,int speed){
         mColor = color;
@@ -52,8 +61,8 @@ public class ActiveCircle extends Element {
     public ActiveCircle(Size size,Vector3 position,int speed){
         this(size,position,Color.BLACK,speed);
     }
-    public ActiveCircle(Vector3 position){
-        this(new Size(250,250),position,50);
+    public ActiveCircle(Vector3 position,int speed){
+        this(new Size(250,250),position,speed);
     }
 
     @Override

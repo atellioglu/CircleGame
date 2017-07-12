@@ -11,13 +11,15 @@ public class MyGdxGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
+	public static final String TITLE = "Circle Game";
 	private GameStateManager gsm;
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
 		Gdx.input.setCatchBackKey(true);
-		gsm.push(new GameState(gsm));
+		gsm.push(new MenuState(gsm));
+		//gsm.push(new GameState(gsm,2));
 	}
 
 	@Override

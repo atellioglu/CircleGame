@@ -17,9 +17,9 @@ public  abstract  class State extends InputAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
         Gdx.input.setInputProcessor(this);
-        init();
     }
     protected abstract void init();
     public abstract void update(float dt);
     public abstract void render(SpriteBatch sb);
+    public abstract void dispose();
 }

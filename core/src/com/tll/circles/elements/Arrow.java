@@ -18,12 +18,16 @@ public class Arrow extends Element{
     public Arrow(){
 
     }
+    public Sprite getSprite(){
+        return mSprite;
+    }
     //oyuna baslarken kullanilacak olan constructor
     public Arrow(ActiveCircle activeCircle){
         mActiveCircle = activeCircle;
         mSprite = new Sprite(AssetManager.defaultArrow);
-        mSprite.setSize(50,50);
-        mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() / 2 - mSprite.getWidth() / 2, activeCircle.getY() + mSprite.getHeight() / 2);
+        mSprite.setSize(activeCircle.getWidth()/3, activeCircle.getHeight()/3);
+        //mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() / 2 - mSprite.getWidth() / 2, activeCircle.getY() + mSprite.getHeight() / 2);
+        mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() - mSprite.getWidth() / 2, activeCircle.getY() + activeCircle.getHeight()/2 - mSprite.getHeight() / 2);
         attach(activeCircle);
         velocity = new Vector3(activeCircle.getSpeed(),activeCircle.getSpeed(),0);
     }
@@ -35,7 +39,6 @@ public class Arrow extends Element{
     }
     public void attach(ActiveCircle activeCircle){
         mActiveCircle = activeCircle;
-        mSprite.setOriginCenter();
     }
     public void detach(){
         mActiveCircle = null;
@@ -47,6 +50,7 @@ public class Arrow extends Element{
 
     public void setClockwise(boolean clockwise) {
         this.clockwise = clockwise;
+
     }
 
     @Override
@@ -56,13 +60,12 @@ public class Arrow extends Element{
 
     @Override
     public void update(float dt) {
+        float xx,yy;
         if(mActiveCircle == null){
-            // TODO: 10/07/17 Tiklandiginda ayni dogrultuda gitmesi gerekir.
             Vector2 current = new Vector2(mSprite.getX(),mSprite.getY());
-            float rotationAngle = mSprite.getRotation();
-            float xx =  current.x + (float)Math.cos(rotationAngle)*velocity.x*dt;
-            float yy =  current.y+ (float)Math.sin(rotationAngle) *velocity.y * dt;
-            Gdx.app.log("Position ",xx + " "+yy);
+            float rotationAngle = (mSprite.getRotation()%360)+360+270;
+            xx =  current.x + (float)Math.cos(Math.toRadians(rotationAngle))*velocity.x * dt*5;
+            yy =  current.y+ (float)Math.sin(Math.toRadians(rotationAngle)) *velocity.y * dt*5;
             mSprite.setPosition(xx,yy);
             //duz ilerleme!
         }else{
@@ -73,8 +76,8 @@ public class Arrow extends Element{
                 mSprite.rotate(-mActiveCircle.getRotationAngleSpeed());
             }
             float rotationAngle = mSprite.getRotation();
-            Gdx.app.log("Rotation",String.valueOf(rotationAngle%360));
-            Vector2 vec2= calculateOrbit(rotationAngle,mActiveCircle.getWidth()/2-mSprite.getHeight()/2,new Vector2(mActiveCircle.getX()+mActiveCircle.getWidth()/2,mActiveCircle.getY()+mActiveCircle.getHeight()/2));
+            // Gdx.app.log("Rotation",String.valueOf(rotationAngle%360));
+            Vector2 vec2 = calculateOrbit(rotationAngle, mActiveCircle.getWidth() / 2 - mSprite.getHeight() / 2, new Vector2(mActiveCircle.getX() + mActiveCircle.getWidth() / 2, mActiveCircle.getY() + mActiveCircle.getHeight() / 2));
             mSprite.setPosition(vec2.x-mSprite.getWidth()/2,vec2.y-mSprite.getHeight()/2);
             //rotasyon
         }
