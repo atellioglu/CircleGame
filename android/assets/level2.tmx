@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="left-down" width="5" height="10" tilewidth="96" tileheight="96" nextobjectid="5">
- <tileset firstgid="1" name="background" tilewidth="96" tileheight="96" tilecount="1" columns="1">
-  <image source="background.png" trans="333333" width="96" height="96"/>
- </tileset>
- <layer name="background" width="5" height="10">
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="left-down" width="1" height="1" tilewidth="480" tileheight="800" nextobjectid="11">
+ <layer name="background" width="1" height="1">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYBwGGAAUtAAz
+   eJxjYGBgAAAABAAB
   </data>
  </layer>
  <objectgroup name="circles">
-  <object id="1" name="start" x="96" y="576" width="96" height="96"/>
-  <object id="3" name="end" x="192" y="192" width="96" height="96"/>
+  <object id="5" name="start" x="140" y="500" width="200" height="200"/>
+  <object id="9" name="end" x="140" y="100" width="200" height="200"/>
  </objectgroup>
 </map>

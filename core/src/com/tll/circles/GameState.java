@@ -1,5 +1,10 @@
 package com.tll.circles;
 
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,6 +19,10 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScalingViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sun.glass.ui.Size;
 import com.tll.circles.elements.ActiveCircle;
 import com.tll.circles.elements.Arrow;
@@ -25,56 +34,94 @@ import java.util.List;
 /**
  * Created by abdullahtellioglu on 09/07/17.
  */
-public class GameState extends State {
+public class GameState extends InputAdapter implements Screen {
     private List<Element> elements;
     private Arrow userArrow;
     private boolean paused = false,started=true;
     private int levelIndex;
-    public GameState(GameStateManager gsm,int levelIndex) {
-        super(gsm);
-        this.levelIndex = levelIndex;
-        init();
-    }
+    private OrthographicCamera camera;
+    private Viewport viewport;
 
     private TmxMapLoader loader;
 
     private TiledMap tiledMap;
 
     private OrthogonalTiledMapRenderer tiledMapRenderer;
-
-    @Override
-    protected void init() {
-        // TODO: 10/07/17 Harita burada olusturulacak
-
+    private MyGdxGame game;
+    public GameState(MyGdxGame game,int levelIndex){
+        this.game = game;
+        this.levelIndex = levelIndex;
+        camera = new OrthographicCamera();
+        viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
         loader = new TmxMapLoader();
         tiledMap = loader.load(String.format("level%d.tmx",levelIndex));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-
-
         elements = new ArrayList<Element>();
         int count = tiledMap.getLayers().getCount();
         for(MapObject object : tiledMap.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
-            ActiveCircle activeCircle = new ActiveCircle(new Size((int)rectangle.getWidth()*2,(int)rectangle.getHeight()*2),new Vector3(rectangle.x,rectangle.y,0),100);
+            Gdx.app.log("Rectangle : ",rectangle.toString());
+            ActiveCircle activeCircle = new ActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0),100);
             elements.add(activeCircle);
-            if(object.getName().equals("start")){
+            if(object.getName()!=null && object.getName().equals("start")){
                 userArrow = new Arrow(activeCircle);
                 elements.add(userArrow);
-            }else if(object.getName().equals("end")){
+            }else if(object.getName()!= null && object.getName().equals("end")){
                 activeCircle.setEndCircle(true);
             }
         }
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
-    public void render(SpriteBatch sb) {
+    public void show() {
+
+    }
+
+    @Override
+    public void render(float delta) {
+        update(delta);
+        SpriteBatch sb = game.batch;
+        Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1f);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
         tiledMapRenderer.render();
         sb.begin();
+
         for(int i =0;i<elements.size();i++){
-            elements.get(i).render(sb);
+            if(!(elements.get(i) instanceof Arrow)){
+                elements.get(i).render(sb);
+            }
+
+
+         /*   if(elements.get(i) instanceof ActiveCircle){
+                ActiveCircle circle = (ActiveCircle)elements.get(i);
+                Gdx.app.log("Circle pos",circle.getX()+ " "+circle.getY());
+            }*/
         }
+        userArrow.render(sb);
         sb.end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width,height,true);
+        camera.position.set(camera.viewportWidth/2,camera.viewportHeight/2,0);
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 
     @Override
@@ -104,7 +151,6 @@ public class GameState extends State {
         }
         return null;
     }
-    @Override
     public void update(float dt) {
         tiledMapRenderer.setView(camera);
         ActiveCircle activeCircle = checkAttach();
@@ -118,14 +164,13 @@ public class GameState extends State {
     }
 
     private long lastDetachTime =0;
-    @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if(!paused){
             userArrow.detach();
             lastDetachTime = System.currentTimeMillis();
         }
         if(screenX <= 100 ){
-            gsm.set(new GameState(gsm,levelIndex));
+            game.setScreen(new GameState(game,this.levelIndex));
         }
         return false;
     }

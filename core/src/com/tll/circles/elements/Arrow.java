@@ -3,6 +3,7 @@ package com.tll.circles.elements;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.AssetManager;
@@ -28,7 +29,7 @@ public class Arrow extends Element{
         mSprite.setSize(activeCircle.getWidth()/3, activeCircle.getHeight()/3);
         //mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() / 2 - mSprite.getWidth() / 2, activeCircle.getY() + mSprite.getHeight() / 2);
         mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() - mSprite.getWidth() / 2, activeCircle.getY() + activeCircle.getHeight()/2 - mSprite.getHeight() / 2);
-        attach(activeCircle);
+        mActiveCircle = activeCircle;
         velocity = new Vector3(activeCircle.getSpeed(),activeCircle.getSpeed(),0);
     }
     public boolean isAttached(){
@@ -38,7 +39,10 @@ public class Arrow extends Element{
             return true;
     }
     public void attach(ActiveCircle activeCircle){
+        float angle = (float)Math.atan2(mSprite.getY()+mSprite.getHeight()/2 - activeCircle.getCenterY(),mSprite.getX()+mSprite.getWidth()/2 - activeCircle.getCenterX())* MathUtils.radiansToDegrees;
+        mSprite.setRotation(angle);
         mActiveCircle = activeCircle;
+
     }
     public void detach(){
         mActiveCircle = null;
@@ -77,7 +81,7 @@ public class Arrow extends Element{
             }
             float rotationAngle = mSprite.getRotation();
             // Gdx.app.log("Rotation",String.valueOf(rotationAngle%360));
-            Vector2 vec2 = calculateOrbit(rotationAngle, mActiveCircle.getWidth() / 2 - mSprite.getHeight() / 2, new Vector2(mActiveCircle.getX() + mActiveCircle.getWidth() / 2, mActiveCircle.getY() + mActiveCircle.getHeight() / 2));
+            Vector2 vec2 = calculateOrbit(rotationAngle, mActiveCircle.getWidth() / 2 , new Vector2(mActiveCircle.getX() + mActiveCircle.getWidth() / 2, mActiveCircle.getY() + mActiveCircle.getHeight() / 2));
             mSprite.setPosition(vec2.x-mSprite.getWidth()/2,vec2.y-mSprite.getHeight()/2);
             //rotasyon
         }

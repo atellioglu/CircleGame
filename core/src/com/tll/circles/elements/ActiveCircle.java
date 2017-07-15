@@ -13,7 +13,7 @@ import com.tll.circles.AssetManager;
 public class ActiveCircle extends Element {
     public static final String TAG = "ActiveCircle";
     private int mSpeed = 50;
-    private int mRotationAngleSpeed = 3;
+    private int mRotationAngleSpeed = 5;
     private Color mColor = Color.BLACK;
     private float mTimeout;
     private boolean endCircle;
@@ -33,6 +33,12 @@ public class ActiveCircle extends Element {
         mSprite.setSize(size.width, size.height);
         mSprite.setPosition(position.x, position.y);
         mSprite.setOriginCenter();
+    }
+    public float getCenterX(){
+        return getX() + getWidth()/2;
+    }
+    public float getCenterY(){
+        return getY() + getHeight()/2;
     }
     public float getX(){
         return mSprite.getX();
