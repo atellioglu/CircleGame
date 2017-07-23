@@ -95,6 +95,7 @@ public class GameState extends InputAdapter implements Screen {
         userArrow.render(sb);
         sb.end();
         // TODO: 23/07/17 TEST ICIN YAZILDI !! ILERIDE SIL
+        /*
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         shapeRenderer.setColor(Color.GREEN);
         for(int i =0;i<elements.size();i++){
@@ -106,7 +107,7 @@ public class GameState extends InputAdapter implements Screen {
                 shapeRenderer.rect(arrow.getSprite().getX(),arrow.getSprite().getY(),arrow.getSprite().getWidth(),arrow.getSprite().getHeight());
             }
         }
-        shapeRenderer.end();
+        shapeRenderer.end();*/
         barriers.render(sb);
     }
 
@@ -137,6 +138,8 @@ public class GameState extends InputAdapter implements Screen {
         return null;
     }
     public void update(float dt) {
+        if(dt==0)
+            return;
         tiledMapRenderer.setView(camera);
         if(barriers.checkCollision(userArrow.getSprite())){
             Gdx.app.log("GG","EZ");
@@ -145,6 +148,10 @@ public class GameState extends InputAdapter implements Screen {
         }
         ActiveCircle activeCircle = checkAttach();
         if(activeCircle != null){
+            if(activeCircle instanceof EndCircle){
+                nextLevel();
+                return;
+            }
             userArrow.attach(activeCircle);
             activeCircle.attach(userArrow);
         }
@@ -228,7 +235,9 @@ public class GameState extends InputAdapter implements Screen {
     public void hide() {
 
     }
-
+    public void nextLevel(){
+        game.setScreen(new GameState(game,this.levelIndex+1));
+    }
     @Override
     public void dispose() {
 
