@@ -19,10 +19,7 @@ public class MenuState extends State {
     }
     @Override
     public void init() {
-        /*if (Gdx.input.justTouched()){
-            gsm.set(new GameState(gsm,1));
-            dispose();
-        }*/
+
     }
 
     @Override

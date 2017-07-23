@@ -4,10 +4,12 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.CircleMapObject;
 import com.badlogic.gdx.maps.objects.EllipseMapObject;
@@ -26,7 +28,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.sun.glass.ui.Size;
 import com.tll.circles.elements.ActiveCircle;
 import com.tll.circles.elements.Arrow;
+import com.tll.circles.elements.Barrier;
 import com.tll.circles.elements.Element;
+import com.tll.circles.elements.EndCircle;
+import com.tll.circles.elements.SafeActiveCircle;
+import com.tll.circles.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +42,7 @@ import java.util.List;
  */
 public class GameState extends InputAdapter implements Screen {
     private List<Element> elements;
+    private Barrier barriers;
     private Arrow userArrow;
     private boolean paused = false,started=true;
     private int levelIndex;
@@ -45,6 +52,8 @@ public class GameState extends InputAdapter implements Screen {
     private TmxMapLoader loader;
 
     private TiledMap tiledMap;
+    //test icin
+    private ShapeRenderer shapeRenderer;
 
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
@@ -57,19 +66,9 @@ public class GameState extends InputAdapter implements Screen {
         tiledMap = loader.load(String.format("level%d.tmx",levelIndex));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         elements = new ArrayList<Element>();
-        int count = tiledMap.getLayers().getCount();
-        for(MapObject object : tiledMap.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
-            Gdx.app.log("Rectangle : ",rectangle.toString());
-            ActiveCircle activeCircle = new ActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0),100);
-            elements.add(activeCircle);
-            if(object.getName()!=null && object.getName().equals("start")){
-                userArrow = new Arrow(activeCircle);
-                elements.add(userArrow);
-            }else if(object.getName()!= null && object.getName().equals("end")){
-                activeCircle.setEndCircle(true);
-            }
-        }
+        barriers = new Barrier();
+        loadMap();
+        shapeRenderer = new ShapeRenderer();
         Gdx.input.setInputProcessor(this);
     }
 
@@ -92,15 +91,23 @@ public class GameState extends InputAdapter implements Screen {
             if(!(elements.get(i) instanceof Arrow)){
                 elements.get(i).render(sb);
             }
-
-
-         /*   if(elements.get(i) instanceof ActiveCircle){
-                ActiveCircle circle = (ActiveCircle)elements.get(i);
-                Gdx.app.log("Circle pos",circle.getX()+ " "+circle.getY());
-            }*/
         }
         userArrow.render(sb);
         sb.end();
+        // TODO: 23/07/17 TEST ICIN YAZILDI !! ILERIDE SIL
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.GREEN);
+        for(int i =0;i<elements.size();i++){
+            if(elements.get(i) instanceof ActiveCircle){
+                ActiveCircle activeCircle = (ActiveCircle)elements.get(i);
+                shapeRenderer.rect(activeCircle.getX(),activeCircle.getY(),activeCircle.getWidth(),activeCircle.getHeight());
+            }else if(elements.get(i) instanceof Arrow){
+                Arrow arrow = (Arrow)elements.get(i);
+                shapeRenderer.rect(arrow.getSprite().getX(),arrow.getSprite().getY(),arrow.getSprite().getWidth(),arrow.getSprite().getHeight());
+            }
+        }
+        shapeRenderer.end();
+        barriers.render(sb);
     }
 
     @Override
@@ -130,34 +137,37 @@ public class GameState extends InputAdapter implements Screen {
     }
 
     private ActiveCircle checkAttach(){
+        // TODO: 23/07/17 Burayi duzelt!
         if(System.currentTimeMillis() - lastDetachTime <=500){
             return null;
         }
         if(userArrow.isAttached()){
             return null;
         }
-        float arrowCenterX = userArrow.getSprite().getX()+userArrow.getSprite().getWidth()/2;
-        float arrowCenterY = userArrow.getSprite().getY()+userArrow.getSprite().getHeight()/2;
+      
         for(int i =0;i<elements.size();i++){
             if(elements.get(i) instanceof ActiveCircle){
                 ActiveCircle activeCircle = (ActiveCircle)elements.get(i);
-                float centerX = activeCircle.getX()+activeCircle.getWidth()/2;
-                float centerY = activeCircle.getY()+activeCircle.getHeight()/2;
-                float distance = (float)Math.sqrt(Math.pow(centerX-arrowCenterX,2)+Math.pow(centerY-arrowCenterY,2));
-                if(distance<=activeCircle.getWidth()/2){
+                boolean collided = Util.isCollided(activeCircle.getSprite(),userArrow.getSprite());
+                if(collided)
                     return activeCircle;
-                }
             }
         }
         return null;
     }
     public void update(float dt) {
         tiledMapRenderer.setView(camera);
+        if(barriers.checkCollision(userArrow.getSprite())){
+            Gdx.app.log("GG","EZ");
+            game.setScreen(new GameState(game,this.levelIndex));
+            return;
+        }
         ActiveCircle activeCircle = checkAttach();
         if(activeCircle != null){
             userArrow.attach(activeCircle);
-
+            activeCircle.attach(userArrow);
         }
+
         for(int i =0;i<elements.size();i++){
             elements.get(i).update(dt);
         }
@@ -166,6 +176,10 @@ public class GameState extends InputAdapter implements Screen {
     private long lastDetachTime =0;
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if(!paused){
+            ActiveCircle activeCircle = userArrow.getAttached();
+            if(activeCircle!=null){
+                activeCircle.detach();
+            }
             userArrow.detach();
             lastDetachTime = System.currentTimeMillis();
         }
@@ -173,5 +187,45 @@ public class GameState extends InputAdapter implements Screen {
             game.setScreen(new GameState(game,this.levelIndex));
         }
         return false;
+    }
+    private void loadMap(){
+        //cemberleri olustur
+        for(MapObject object : tiledMap.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            ActiveCircle activeCircle = null;
+
+            if(object.getName()!=null && object.getName().equals("start")){
+                activeCircle = new SafeActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                userArrow = new Arrow(activeCircle);
+                activeCircle.attach(userArrow);
+                elements.add(userArrow);
+            }else if(object.getName()!= null && object.getName().equals("end")){
+                activeCircle = new EndCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+            }else{
+                int type = Integer.parseInt(String.valueOf(object.getProperties().get("type")));
+                switch (type){
+                    case 0:
+                        //safe olanlar
+                        activeCircle = new SafeActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                        break;
+                    case 1:
+                        //safe olmayanlar
+                        activeCircle = new ActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                        break;
+
+                }
+            }
+            elements.add(activeCircle);
+        }
+        //yildizlari olustur
+        for(MapObject object : tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
+
+        }
+        //engelleri olustur
+        for(MapObject object : tiledMap.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            barriers.addRectangle(rectangle);
+
+        }
     }
 }
