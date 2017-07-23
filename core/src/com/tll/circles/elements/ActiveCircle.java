@@ -12,7 +12,7 @@ import com.tll.circles.AssetManager;
  */
 public class ActiveCircle extends Element {
     public static final String TAG = "ActiveCircle";
-    private int mRotationAngleSpeed = 5;
+    private float mRotationAngleSpeed = 5;
     private float mTimeout;
     protected Arrow attachedArrow;
 
@@ -20,6 +20,9 @@ public class ActiveCircle extends Element {
         mSprite = new Sprite(AssetManager.blackCircle);
         mSprite.setSize(size.width, size.height);
         mSprite.setPosition(position.x, position.y);
+    }
+    public void setRotationAngleSpeed(float rotationAngleSpeed){
+        mRotationAngleSpeed  = rotationAngleSpeed;
     }
     public void attach(Arrow arrow){
         attachedArrow = arrow;
@@ -42,7 +45,7 @@ public class ActiveCircle extends Element {
     public float getY(){
         return mSprite.getY();
     }
-    public int getRotationAngleSpeed(){
+    public float getRotationAngleSpeed(){
         return mRotationAngleSpeed;
     }
     public float getWidth(){

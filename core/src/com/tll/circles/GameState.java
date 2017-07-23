@@ -116,25 +116,6 @@ public class GameState extends InputAdapter implements Screen {
         camera.position.set(camera.viewportWidth/2,camera.viewportHeight/2,0);
     }
 
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
-    }
 
     private ActiveCircle checkAttach(){
         // TODO: 23/07/17 Burayi duzelt!
@@ -215,6 +196,10 @@ public class GameState extends InputAdapter implements Screen {
 
                 }
             }
+            if(object.getProperties().get("angle")!=null){
+                float angle = Float.parseFloat(String.valueOf(object.getProperties().get("angle")));
+                activeCircle.setRotationAngleSpeed(angle);
+            }
             elements.add(activeCircle);
         }
         //yildizlari olustur
@@ -227,5 +212,25 @@ public class GameState extends InputAdapter implements Screen {
             barriers.addRectangle(rectangle);
 
         }
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void dispose() {
+
     }
 }
