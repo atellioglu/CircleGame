@@ -3,21 +3,27 @@ package com.tll.circles;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
- * Created by burhanboz on 12/07/2017.
+ * Created by abdullahtellioglu on 06/08/17.
  */
-public class MenuState extends InputAdapter implements Screen {
-
-    public MenuState() {
-
+public class AfterGameState extends InputAdapter implements Screen{
+    private MyGdxGame game;
+    public AfterGameState(MyGdxGame game){
+        this.game = game;
     }
-
-
     @Override
     public void show() {
+        if(game.getAdListener()!=null){
+            int count = PreferenceHandler.getInt("dead_counter",0);
+            if(count %3 == 0){
+                game.getAdListener().showAd(1);
+            }else{
+                game.getAdListener().hideAd();
+            }
+            PreferenceHandler.saveInt("dead_counter",count+1);
+
+        }
 
     }
 
@@ -53,6 +59,7 @@ public class MenuState extends InputAdapter implements Screen {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
         return super.touchDown(screenX, screenY, pointer, button);
     }
 }

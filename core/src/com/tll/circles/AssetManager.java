@@ -11,4 +11,6 @@ public class AssetManager {
     public static final Texture shield = new Texture("shield_not_active.png");
     public static final Texture shieldActive = new Texture("shield_active.png");
     public static final Texture endCircle = new Texture("end1.png");
+    public static final Texture background = new Texture("background.png");
+    public static final Texture barrierWidth = new Texture("safety_tape.png");
 }

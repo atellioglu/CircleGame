@@ -1,5 +1,6 @@
 package com.tll.circles.elements;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,16 +14,25 @@ import com.tll.circles.AssetManager;
 public class ActiveCircle extends Element {
     public static final String TAG = "ActiveCircle";
     private float mRotationAngleSpeed = 5;
-    private float mTimeout;
+    private float mTimeout = 5;
     protected Arrow attachedArrow;
-
-    public ActiveCircle(Size size,Vector3 position){
+    private  float ALPHA_THRESHOLD = 0.5f;
+    private float lastAlphaUpdateTime;
+    private float currentUpdateTime;
+    private float alpha = 1.0f;
+    public ActiveCircle (Size size,Vector3 position){
         mSprite = new Sprite(AssetManager.blackCircle);
         mSprite.setSize(size.width, size.height);
         mSprite.setPosition(position.x, position.y);
+        mSprite.setOriginCenter();
     }
     public void setRotationAngleSpeed(float rotationAngleSpeed){
         mRotationAngleSpeed  = rotationAngleSpeed;
+    }
+    public void setTimeOut(float timeOut){
+
+        ALPHA_THRESHOLD = timeOut/10;
+        mTimeout = timeOut;
     }
     public void attach(Arrow arrow){
         attachedArrow = arrow;
@@ -62,5 +72,21 @@ public class ActiveCircle extends Element {
 
     @Override
     public void update(float dt) {
+        if(attachedArrow!=null){
+            mSprite.rotate(-getRotationAngleSpeed());
+            if(!(this instanceof SafeActiveCircle)){
+                currentUpdateTime += dt;
+                Gdx.app.log("TEST",String.valueOf(currentUpdateTime));
+                if(currentUpdateTime - lastAlphaUpdateTime > 0.5f){
+                    alpha -= 0.1f;
+                    lastAlphaUpdateTime = currentUpdateTime;
+                    mSprite.setAlpha(alpha);
+                    if(alpha <= 0){
+                        Gdx.app.log("TEST","YANDI");
+                    }
+                }
+            }
+        }
+
     }
 }

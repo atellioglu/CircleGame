@@ -80,12 +80,14 @@ public class GameState extends InputAdapter implements Screen {
     @Override
     public void render(float delta) {
         update(delta);
+
         SpriteBatch sb = game.batch;
-        Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1f);
+        Gdx.gl.glClearColor(0.973f, 0.969f, 0.89f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
         tiledMapRenderer.render();
         sb.begin();
+        sb.draw(AssetManager.background, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
 
         for(int i =0;i<elements.size();i++){
             if(!(elements.get(i) instanceof Arrow)){
@@ -94,6 +96,7 @@ public class GameState extends InputAdapter implements Screen {
         }
         userArrow.render(sb);
         sb.end();
+        barriers.render(sb);
         // TODO: 23/07/17 TEST ICIN YAZILDI !! ILERIDE SIL
         /*
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
@@ -108,13 +111,12 @@ public class GameState extends InputAdapter implements Screen {
             }
         }
         shapeRenderer.end();*/
-        barriers.render(sb);
     }
 
     @Override
     public void resize(int width, int height) {
         viewport.update(width,height,true);
-        camera.position.set(camera.viewportWidth/2,camera.viewportHeight/2,0);
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
     }
 
 
@@ -190,7 +192,11 @@ public class GameState extends InputAdapter implements Screen {
             }else if(object.getName()!= null && object.getName().equals("end")){
                 activeCircle = new EndCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
             }else{
-                int type = Integer.parseInt(String.valueOf(object.getProperties().get("type")));
+                int type = 0;
+                if(object.getProperties().get("type")!= null){
+                    type = Integer.parseInt(String.valueOf(object.getProperties().get("type")));
+                }
+
                 switch (type){
                     case 0:
                         //safe olanlar
@@ -211,7 +217,8 @@ public class GameState extends InputAdapter implements Screen {
         }
         //yildizlari olustur
         for(MapObject object : tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
-
+            //Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            //barriers.addRectangle(rectangle);
         }
         //engelleri olustur
         for(MapObject object : tiledMap.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
@@ -219,6 +226,11 @@ public class GameState extends InputAdapter implements Screen {
             barriers.addRectangle(rectangle);
 
         }
+
+        barriers.addRectangle(new Rectangle(0,0,1,MyGdxGame.HEIGHT));
+        barriers.addRectangle(new Rectangle(MyGdxGame.WIDTH-1,0,1,MyGdxGame.HEIGHT));
+        barriers.addRectangle(new Rectangle(0,0,MyGdxGame.WIDTH,1));
+        barriers.addRectangle(new Rectangle(0,MyGdxGame.HEIGHT,MyGdxGame.WIDTH,1));
     }
 
     @Override

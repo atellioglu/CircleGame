@@ -1,16 +1,37 @@
 package com.tll.circles;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.tll.circles.MyGdxGame;
 
-public class AndroidLauncher extends AndroidApplication {
+public class AndroidLauncher extends AndroidApplication implements AdListener{
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		RelativeLayout relativeLayout = new RelativeLayout(this);
+
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new MyGdxGame(), config);
+		MyGdxGame myGdxGame = new MyGdxGame();
+		myGdxGame.setAdListener(this);
+		View gameView = initializeForView(new MyGdxGame(),config);
+		relativeLayout.addView(gameView);
+	}
+
+	@Override
+	public void showAd(int type) {
+		if(type == 0){
+			//banner
+		}else if(type == 1){
+			//inte
+		}
+	}
+
+	@Override
+	public void hideAd() {
+
 	}
 }
