@@ -25,7 +25,6 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.sun.glass.ui.Size;
 import com.tll.circles.elements.ActiveCircle;
 import com.tll.circles.elements.Arrow;
 import com.tll.circles.elements.Barrier;
@@ -76,19 +75,16 @@ public class GameState extends InputAdapter implements Screen {
     public void show() {
 
     }
-
     @Override
     public void render(float delta) {
         update(delta);
-
         SpriteBatch sb = game.batch;
-        Gdx.gl.glClearColor(0.973f, 0.969f, 0.89f, 1f);
+        Gdx.gl.glClearColor(1f, 1f, 1f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
         tiledMapRenderer.render();
         sb.begin();
         sb.draw(AssetManager.background, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
-
         for(int i =0;i<elements.size();i++){
             if(!(elements.get(i) instanceof Arrow)){
                 elements.get(i).render(sb);
@@ -98,25 +94,13 @@ public class GameState extends InputAdapter implements Screen {
         sb.end();
         barriers.render(sb);
         // TODO: 23/07/17 TEST ICIN YAZILDI !! ILERIDE SIL
-        /*
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(Color.GREEN);
-        for(int i =0;i<elements.size();i++){
-            if(elements.get(i) instanceof ActiveCircle){
-                ActiveCircle activeCircle = (ActiveCircle)elements.get(i);
-                shapeRenderer.rect(activeCircle.getX(),activeCircle.getY(),activeCircle.getWidth(),activeCircle.getHeight());
-            }else if(elements.get(i) instanceof Arrow){
-                Arrow arrow = (Arrow)elements.get(i);
-                shapeRenderer.rect(arrow.getSprite().getX(),arrow.getSprite().getY(),arrow.getSprite().getWidth(),arrow.getSprite().getHeight());
-            }
-        }
-        shapeRenderer.end();*/
     }
 
     @Override
     public void resize(int width, int height) {
         viewport.update(width,height,true);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+        barriers.getRenderer().setProjectionMatrix(viewport.getCamera().combined);
     }
 
 
@@ -183,7 +167,6 @@ public class GameState extends InputAdapter implements Screen {
         for(MapObject object : tiledMap.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
             ActiveCircle activeCircle = null;
-
             if(object.getName()!=null && object.getName().equals("start")){
                 activeCircle = new SafeActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
                 userArrow = new Arrow(activeCircle);
@@ -226,11 +209,11 @@ public class GameState extends InputAdapter implements Screen {
             barriers.addRectangle(rectangle);
 
         }
-
-        barriers.addRectangle(new Rectangle(0,0,1,MyGdxGame.HEIGHT));
-        barriers.addRectangle(new Rectangle(MyGdxGame.WIDTH-1,0,1,MyGdxGame.HEIGHT));
-        barriers.addRectangle(new Rectangle(0,0,MyGdxGame.WIDTH,1));
-        barriers.addRectangle(new Rectangle(0,MyGdxGame.HEIGHT,MyGdxGame.WIDTH,1));
+        float barrierThreshold = -15;
+        barriers.addRectangle(new Rectangle(barrierThreshold,0,1,MyGdxGame.HEIGHT));
+        barriers.addRectangle(new Rectangle(MyGdxGame.WIDTH-barrierThreshold,0,1,MyGdxGame.HEIGHT));
+        barriers.addRectangle(new Rectangle(0,barrierThreshold,MyGdxGame.WIDTH,1));
+        barriers.addRectangle(new Rectangle(0,MyGdxGame.HEIGHT-barrierThreshold,MyGdxGame.WIDTH,1));
     }
 
     @Override

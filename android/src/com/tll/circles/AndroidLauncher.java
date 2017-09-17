@@ -12,13 +12,15 @@ public class AndroidLauncher extends AndroidApplication implements AdListener{
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		RelativeLayout relativeLayout = new RelativeLayout(this);
+		/*RelativeLayout relativeLayout = new RelativeLayout(this);
 
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		MyGdxGame myGdxGame = new MyGdxGame();
 		myGdxGame.setAdListener(this);
 		View gameView = initializeForView(new MyGdxGame(),config);
-		relativeLayout.addView(gameView);
+		relativeLayout.addView(gameView);*/
+		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+		initialize(new MyGdxGame(),config);
 	}
 
 	@Override

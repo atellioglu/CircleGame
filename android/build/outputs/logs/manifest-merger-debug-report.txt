@@ -36,7 +36,7 @@ ADDED from /Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/Androi
 activity#com.tll.circles.AndroidLauncher
 ADDED from /Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/AndroidManifest.xml:12:9-21:20
 	android:screenOrientation
-		ADDED from /Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/AndroidManifest.xml:15:13-50
+		ADDED from /Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/AndroidManifest.xml:15:13-49
 	android:label
 		ADDED from /Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/AndroidManifest.xml:14:13-45
 	android:configChanges

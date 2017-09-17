@@ -3,8 +3,8 @@ package com.tll.circles.elements;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.sun.glass.ui.Size;
 import com.tll.circles.AssetManager;
+import com.tll.circles.Size;
 
 /**
  * Created by abdullahtellioglu on 23/07/17.

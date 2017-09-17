@@ -22,7 +22,7 @@ public class MyGdxGame extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		Gdx.input.setCatchBackKey(true);
-		setScreen(new GameState(this,5));
+		setScreen(new GameState(this,1));
 	}
 
 	@Override

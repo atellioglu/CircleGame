@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/core/build/libs/core-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="87892132a314617be67f1e8d3692a9e5adc3c6bc">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/core-1.0_263c120a89d993acaa4fd00c571ae182be46ee26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.6/c249ef4060a4fada952f278455c8f7b9cba3c18a/gdx-box2d-1.9.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c249ef4060a4fada952f278455c8f7b9cba3c18a">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/gdx-box2d-1.9.6_667dc9a033193af220e9bfe4fdb8ef4e5226c741.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.9.6/57c2831c870743712b808384187ea856e541878f/gdx-backend-android-1.9.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="57c2831c870743712b808384187ea856e541878f">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/gdx-backend-android-1.9.6_66808727662366caedabd6235d11b6d521800699.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.6/47d1e9b890e364ec28f128e9bb3b9a12a94c164/gdx-1.9.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="047d1e9b890e364ec28f128e9bb3b9a12a94c164">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/gdx-1.9.6_423e619e4693e8baad93d08e9c0025a000cf10e1.jar" />
+    </item>
+
+</items>

@@ -23,33 +23,35 @@ public class Barrier extends Element {
         renderer.setAutoShapeType(true);
         rectangles = new ArrayList<Rectangle>();
     }
+
     public void addRectangle(Rectangle rectangle){
 
         rectangles.add(rectangle);
     }
-    public List<Rectangle> getRectangles(){
-        return rectangles;
+    public ShapeRenderer getRenderer(){
+        return renderer;
     }
 
     @Override
     public void render(SpriteBatch sb) {
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderer.setColor(Color.DARK_GRAY);
+        renderer.setColor(0.09f,0.89f,0.933f,1f);
         for(int i =0;i<rectangles.size();i++){
             Rectangle rec = rectangles.get(i);
-            renderer.rect(rec.getX(),rec.getY(),rec.getWidth(),rec.getHeight());
-        }
-        renderer.set(ShapeRenderer.ShapeType.Line);
-        renderer.setColor(Color.WHITE);
-        for(int i =0;i<rectangles.size();i++){
-            Rectangle rec = rectangles.get(i);
-            for(int j =(int)rec.x;j<rec.x+rec.width-10;j+=20){
-                renderer.line(j,rec.getY(),j+5,rec.getY()+rec.getHeight());
+            if(rec.getWidth() > rec.getHeight()){
+                for(int j=0;j<rec.getWidth();j+=25){
+                    // TODO: 18/09/17 Burada 25 her zaman cizdirilmeyecek. Eger x +25 buyukse genislikten daha kisa cizdir. Yukseklik icin de ayni!
+                    renderer.rect(rec.getX()+j,rec.getY(),20,rec.getHeight());
+                }
+            }else{
+                for(int j=0;j<rec.getHeight();j+=25){
+                    renderer.rect(rec.getX(),rec.getY()+j,rec.getWidth(),20);
+                }
             }
+
         }
+
         renderer.end();
-
-
     }
     public boolean checkCollision(Sprite arrow){
         for(int i =0;i<rectangles.size();i++){

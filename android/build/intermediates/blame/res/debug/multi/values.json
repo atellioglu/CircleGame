@@ -7,17 +7,17 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 40,
-                    "endOffset": 91
+                    "endColumn": 51,
+                    "endOffset": 102
                 },
                 "from": {
                     "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/strings.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 56,
-                        "endColumn": 40,
-                        "endOffset": 92
+                        "startOffset": 55,
+                        "endColumn": 51,
+                        "endOffset": 102
                     }
                 }
             },
@@ -25,21 +25,13 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 96,
+                    "startOffset": 107,
                     "endLine": 10,
                     "endColumn": 12,
-                    "endOffset": 554
+                    "endOffset": 565
                 },
                 "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 17,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 475
-                    }
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/styles.xml"
                 }
             }
         ]

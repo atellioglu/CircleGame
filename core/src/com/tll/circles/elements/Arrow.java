@@ -42,6 +42,7 @@ public class Arrow extends Element{
             return true;
     }
     public void attach(ActiveCircle activeCircle){
+        mSprite.setSize(activeCircle.getWidth() / 4, activeCircle.getWidth() / 4);
         float angle = (float)Math.atan2(mSprite.getY()+mSprite.getHeight()/2 - activeCircle.getCenterY(),mSprite.getX()+mSprite.getWidth()/2 - activeCircle.getCenterX())* MathUtils.radiansToDegrees;
         mSprite.setRotation(angle);
         mActiveCircle = activeCircle;
@@ -70,9 +71,10 @@ public class Arrow extends Element{
             mSprite.rotate(-mActiveCircle.getRotationAngleSpeed());
             // TODO: 23/07/17 HATA VAR COZ! 
             float rotationAngle = mSprite.getRotation();
+            // TODO: 18/09/17  mActiveCircle.getWidth()/2-5  yerine daha duzgun bir cozum bul!
             Vector2 vec2 = calculateOrbit(
                     rotationAngle,
-                    mActiveCircle.getWidth()/2 ,
+                    mActiveCircle.getWidth()/2-5 ,
                     new Vector2(mActiveCircle.getX() + mActiveCircle.getWidth() / 2,
                     mActiveCircle.getY() + mActiveCircle.getHeight() / 2));
 
