@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -31,6 +32,7 @@ import com.tll.circles.elements.Barrier;
 import com.tll.circles.elements.Element;
 import com.tll.circles.elements.EndCircle;
 import com.tll.circles.elements.SafeActiveCircle;
+import com.tll.circles.elements.Star;
 import com.tll.circles.util.Util;
 
 import java.util.ArrayList;
@@ -40,6 +42,8 @@ import java.util.List;
  * Created by abdullahtellioglu on 09/07/17.
  */
 public class GameState extends InputAdapter implements Screen {
+    private static final int MENU_ITEM_SIZE =64;
+    private static final int MENU_ITEM_SIZE_MARGIN = 10;
     private List<Element> elements;
     private Barrier barriers;
     private Arrow userArrow;
@@ -53,14 +57,17 @@ public class GameState extends InputAdapter implements Screen {
     private TiledMap tiledMap;
     //test icin
     private ShapeRenderer shapeRenderer;
-
+    private SpriteBatch menuItemBatch = new SpriteBatch();
+    // TODO: 18/09/17 Arka planda hata var tum ekrani kaplamiyor!!
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
+    private Sprite retrySprite;
     public GameState(MyGdxGame game,int levelIndex){
         this.game = game;
         this.levelIndex = levelIndex;
         camera = new OrthographicCamera();
         viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
+        //viewport = new FitViewport(MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
         loader = new TmxMapLoader();
         tiledMap = loader.load(String.format("level%d.tmx",levelIndex));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
@@ -69,6 +76,10 @@ public class GameState extends InputAdapter implements Screen {
         loadMap();
         shapeRenderer = new ShapeRenderer();
         Gdx.input.setInputProcessor(this);
+        retrySprite = new Sprite(AssetManager.retry);
+        retrySprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
+        retrySprite.setPosition(MyGdxGame.WIDTH-MENU_ITEM_SIZE-MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
+        retrySprite.setOriginCenter();
     }
 
     @Override
@@ -82,9 +93,19 @@ public class GameState extends InputAdapter implements Screen {
         Gdx.gl.glClearColor(1f, 1f, 1f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(0.765f,0.886f,0.922f,0.7f);
+        for(int i =0;i<MyGdxGame.WIDTH;i+=120){
+            shapeRenderer.line(i,0,i,MyGdxGame.HEIGHT);
+        }
+        for(int i =0;i<MyGdxGame.HEIGHT;i+=120){
+            shapeRenderer.line(0,i,MyGdxGame.WIDTH,i);
+        }
+        shapeRenderer.end();
+
         tiledMapRenderer.render();
+
         sb.begin();
-        sb.draw(AssetManager.background, 0, 0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
         for(int i =0;i<elements.size();i++){
             if(!(elements.get(i) instanceof Arrow)){
                 elements.get(i).render(sb);
@@ -93,14 +114,18 @@ public class GameState extends InputAdapter implements Screen {
         userArrow.render(sb);
         sb.end();
         barriers.render(sb);
+        menuItemBatch.begin();
+        retrySprite.draw(menuItemBatch);
+        menuItemBatch.end();
         // TODO: 23/07/17 TEST ICIN YAZILDI !! ILERIDE SIL
     }
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width,height,true);
+        viewport.update(width, height, true);
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         barriers.getRenderer().setProjectionMatrix(viewport.getCamera().combined);
+        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
     }
 
 
@@ -200,6 +225,8 @@ public class GameState extends InputAdapter implements Screen {
         }
         //yildizlari olustur
         for(MapObject object : tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
+            Star star = new Star(((RectangleMapObject)object).getRectangle());
+            elements.add(star);
             //Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
             //barriers.addRectangle(rectangle);
         }

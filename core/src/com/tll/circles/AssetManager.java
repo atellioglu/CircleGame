@@ -14,4 +14,6 @@ public class AssetManager {
     public static final Texture background = new Texture("background.png");
     public static final Texture barrierWidth = new Texture("safety_tape.png");
     public static final Texture yellowRectangle = new Texture("yellow_rect.jpg");
+    public static final Texture star = new Texture("star.png");
+    public static final Texture retry = new Texture("retry.png");
 }

@@ -30,7 +30,6 @@ public class ActiveCircle extends Element {
         mRotationAngleSpeed  = rotationAngleSpeed;
     }
     public void setTimeOut(float timeOut){
-
         ALPHA_THRESHOLD = timeOut/10;
         mTimeout = timeOut;
     }

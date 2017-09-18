@@ -13,7 +13,7 @@ import com.tll.circles.AssetManager;
  */
 public class Arrow extends Element{
     private static final int VELOCITYX = 250,VELOCITYY = 250;
-    private static final int WIDTH = 32,HEIGHT = 32;
+    private static final int WIDTH = 48,HEIGHT = 48;
     //okun uzerinde bulundugu yuvarlak!
     private ActiveCircle mActiveCircle;
     private boolean clockwise;
@@ -42,7 +42,6 @@ public class Arrow extends Element{
             return true;
     }
     public void attach(ActiveCircle activeCircle){
-        mSprite.setSize(activeCircle.getWidth() / 4, activeCircle.getWidth() / 4);
         float angle = (float)Math.atan2(mSprite.getY()+mSprite.getHeight()/2 - activeCircle.getCenterY(),mSprite.getX()+mSprite.getWidth()/2 - activeCircle.getCenterX())* MathUtils.radiansToDegrees;
         mSprite.setRotation(angle);
         mActiveCircle = activeCircle;
