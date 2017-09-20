@@ -20,25 +20,7 @@ public class DefaultAnimation {
     private long startedAnimationTime;
     private List<AnimationElement> list;
     public DefaultAnimation(int x, int y,AnimationColor color){
-        this.x = x;
-        this.y = y;
-        list = new ArrayList<AnimationElement>();
-        switch (color){
-            case YELLOW:
-                for(int i =0;i<new Random().nextInt(30)+20;i++){
-                    AnimationElement element = new AnimationElement();
-                    Sprite sprite = new Sprite(AssetManager.yellowRectangle);
-                    sprite.setSize(30,30);
-                    sprite.setOriginCenter();
-                    sprite.setX(this.x);
-                    sprite.setY(this.y);
-                    element.sprite = sprite;
-                    list.add(element);
-                }
-                break;
-            case BLACK:
-                break;
-        }
+
     }
 
     public void setTimeOut(float timeOut){

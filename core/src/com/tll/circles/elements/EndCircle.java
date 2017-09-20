@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.AssetManager;
 import com.tll.circles.Size;
+import com.tll.circles.ThemeFactory;
 
 /**
  * Created by abdullahtellioglu on 23/07/17.
@@ -12,7 +13,7 @@ import com.tll.circles.Size;
 public class EndCircle extends ActiveCircle {
     public EndCircle(Size size, Vector3 position) {
         super(size, position);
-        mSprite = new Sprite(AssetManager.endCircle);
+        mSprite = new Sprite(ThemeFactory.getInstance().getTheme().endCircle);
         mSprite.setSize(size.width, size.height);
         mSprite.setPosition(position.x, position.y);
         mSprite.setOriginCenter();

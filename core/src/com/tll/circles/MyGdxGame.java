@@ -22,6 +22,7 @@ public class MyGdxGame extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		Gdx.input.setCatchBackKey(true);
+		ThemeFactory.setInstance("BLACK");
 		setScreen(new GameState(this,1));
 	}
 

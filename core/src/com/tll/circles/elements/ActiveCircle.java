@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.AssetManager;
 import com.tll.circles.Size;
+import com.tll.circles.ThemeFactory;
 
 /**
  * Created by abdullahtellioglu on 09/07/17.
@@ -21,7 +22,7 @@ public class ActiveCircle extends Element {
     private float currentUpdateTime;
     private float alpha = 1.0f;
     public ActiveCircle (Size size,Vector3 position){
-        mSprite = new Sprite(AssetManager.blackCircle);
+        mSprite = new Sprite(ThemeFactory.getInstance().getTheme().circle);
         mSprite.setSize(size.width, size.height);
         mSprite.setPosition(position.x, position.y);
         mSprite.setOriginCenter();

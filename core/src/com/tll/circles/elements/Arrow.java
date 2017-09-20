@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.AssetManager;
+import com.tll.circles.ThemeFactory;
 
 /**
  * Created by abdullahtellioglu on 09/07/17.
@@ -24,7 +25,7 @@ public class Arrow extends Element{
     }
     public Arrow(ActiveCircle activeCircle){
         mActiveCircle = activeCircle;
-        mSprite = new Sprite(AssetManager.defaultArrow);
+        mSprite = new Sprite(ThemeFactory.getInstance().getTheme().arrow);
         mSprite.setSize(WIDTH, HEIGHT);
         //mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() / 2 - mSprite.getWidth() / 2, activeCircle.getY() + mSprite.getHeight() / 2);
         mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() - mSprite.getWidth() / 2, activeCircle.getY() + activeCircle.getHeight()/2 - mSprite.getHeight() / 2);

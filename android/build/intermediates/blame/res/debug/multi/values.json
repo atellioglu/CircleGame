@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,52 +11,7 @@
                     "endOffset": 102
                 },
                 "from": {
-                    "file": "C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 57,
-                        "endColumn": 51,
-                        "endOffset": 104
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 107,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 565
-                },
-                "from": {
-                    "file": "C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 19,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 484
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 51,
-                    "endOffset": 102
-                },
-                "from": {
-                    "file": "C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\strings.xml",
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -76,13 +31,103 @@
                     "endOffset": 565
                 },
                 "from": {
-                    "file": "C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\styles.xml"
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 17,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 475
+                    }
                 }
             }
         ]
     },
     {
-        "outputFile": "C:\\Users\\burhanboz\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 51,
+                        "endOffset": 102
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 565
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\styles.xml"
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 51,
+                        "endOffset": 104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 565
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 19,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 484
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\burhanboz\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -93,7 +138,7 @@
                     "endOffset": 91
                 },
                 "from": {
-                    "file": "C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\strings.xml",
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -113,7 +158,7 @@
                     "endOffset": 554
                 },
                 "from": {
-                    "file": "C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\styles.xml",
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

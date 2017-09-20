@@ -61,12 +61,13 @@ public class GameState extends InputAdapter implements Screen {
     // TODO: 18/09/17 Arka planda hata var tum ekrani kaplamiyor!!
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
-
     //HUD
     private Sprite retrySprite;
     private Sprite menuSprite;
+    private Theme theme;
     public GameState(MyGdxGame game,int levelIndex){
         this.game = game;
+        theme = ThemeFactory.getInstance().getTheme();
         this.levelIndex = levelIndex;
         camera = new OrthographicCamera();
         viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
@@ -82,14 +83,15 @@ public class GameState extends InputAdapter implements Screen {
         createHud();
     }
     private void createHud(){
-        retrySprite = new Sprite(AssetManager.retry);
+        retrySprite = new Sprite(theme.retry);
         retrySprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
         retrySprite.setPosition(MyGdxGame.WIDTH-MENU_ITEM_SIZE-MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
         retrySprite.setOriginCenter();
-        menuSprite = new Sprite(AssetManager.menu);
+        menuSprite = new Sprite(theme.menu);
         menuSprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
         menuSprite.setPosition(MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
         menuSprite.setOriginCenter();
+
 
     }
     @Override
@@ -100,11 +102,13 @@ public class GameState extends InputAdapter implements Screen {
     public void render(float delta) {
         update(delta);
         SpriteBatch sb = game.batch;
-        Gdx.gl.glClearColor(1f, 1f, 1f, 1f);
+        Color bg = ThemeFactory.getInstance().getTheme().backgroundColor;
+        Gdx.gl.glClearColor(bg.r, bg.g, bg.b, bg.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(0.765f,0.886f,0.922f,0.7f);
+        Color line = ThemeFactory.getInstance().getTheme().lineColor;
+        shapeRenderer.setColor(line.r,line.g,line.b,line.a);
         for(int i =0;i<MyGdxGame.WIDTH;i+=120){
             shapeRenderer.line(i,0,i,MyGdxGame.HEIGHT);
         }
@@ -203,6 +207,7 @@ public class GameState extends InputAdapter implements Screen {
 
         return false;
     }
+
     private Sprite lastTouchedDownSprite = null;
     private long lastDetachTime =0;
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
@@ -226,7 +231,6 @@ public class GameState extends InputAdapter implements Screen {
         return false;
     }
     private void showMenu(){
-
     }
     private void loadMap(){
         //cemberleri olustur
