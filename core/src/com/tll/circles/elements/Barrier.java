@@ -55,7 +55,10 @@ public class Barrier extends Element {
     }
     public boolean checkCollision(Sprite arrow){
         for(int i =0;i<rectangles.size();i++){
-            boolean overLaps = rectangles.get(i).overlaps(arrow.getBoundingRectangle());
+            Rectangle rectangle = arrow.getBoundingRectangle();
+            rectangle.setWidth(rectangle.getWidth()-5);
+            rectangle.setHeight(rectangle.getHeight()-5);
+            boolean overLaps = rectangles.get(i).overlaps(rectangle);
             if(overLaps)
                 return true;
         }

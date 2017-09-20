@@ -61,6 +61,8 @@ public class GameState extends InputAdapter implements Screen {
     // TODO: 18/09/17 Arka planda hata var tum ekrani kaplamiyor!!
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
+
+    //HUD
     private Sprite retrySprite;
     private Sprite menuSprite;
     public GameState(MyGdxGame game,int levelIndex){
@@ -182,14 +184,19 @@ public class GameState extends InputAdapter implements Screen {
     Vector3 touchPoint = new Vector3();
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        camera.unproject(touchPoint.set(screenX,screenY,0));
         if(!paused){
             if(lastTouchedDownSprite == retrySprite){
-                camera.unproject(touchPoint.set(screenX,screenY,0));
                 if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
                     game.setScreen(new GameState(game,this.levelIndex));
                     return false;
                 }else{
                     lastTouchedDownSprite = null;
+                }
+            }
+            if(lastTouchedDownSprite == menuSprite){
+                if(menuSprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
+                    showMenu();
                 }
             }
         }
@@ -199,14 +206,16 @@ public class GameState extends InputAdapter implements Screen {
     private Sprite lastTouchedDownSprite = null;
     private long lastDetachTime =0;
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-
         if(!paused){
             camera.unproject(touchPoint.set(screenX,screenY,0));
             if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
                 lastTouchedDownSprite = retrySprite;
                 return false;
             }
-
+            if(menuSprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
+                lastTouchedDownSprite = menuSprite;
+                return false;
+            }
             ActiveCircle activeCircle = userArrow.getAttached();
             if(activeCircle!=null){
                 activeCircle.detach();
@@ -215,6 +224,9 @@ public class GameState extends InputAdapter implements Screen {
             lastDetachTime = System.currentTimeMillis();
         }
         return false;
+    }
+    private void showMenu(){
+
     }
     private void loadMap(){
         //cemberleri olustur
