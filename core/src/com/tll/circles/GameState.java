@@ -42,8 +42,8 @@ import java.util.List;
  * Created by abdullahtellioglu on 09/07/17.
  */
 public class GameState extends InputAdapter implements Screen {
-    private static final int MENU_ITEM_SIZE =64;
-    private static final int MENU_ITEM_SIZE_MARGIN = 10;
+    private static final int MENU_ITEM_SIZE =48;
+    private static final int MENU_ITEM_SIZE_MARGIN = 15;
     private List<Element> elements;
     private Barrier barriers;
     private Arrow userArrow;
@@ -62,6 +62,7 @@ public class GameState extends InputAdapter implements Screen {
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
     private Sprite retrySprite;
+    private Sprite menuSprite;
     public GameState(MyGdxGame game,int levelIndex){
         this.game = game;
         this.levelIndex = levelIndex;
@@ -76,12 +77,19 @@ public class GameState extends InputAdapter implements Screen {
         loadMap();
         shapeRenderer = new ShapeRenderer();
         Gdx.input.setInputProcessor(this);
+        createHud();
+    }
+    private void createHud(){
         retrySprite = new Sprite(AssetManager.retry);
         retrySprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
         retrySprite.setPosition(MyGdxGame.WIDTH-MENU_ITEM_SIZE-MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
         retrySprite.setOriginCenter();
-    }
+        menuSprite = new Sprite(AssetManager.menu);
+        menuSprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
+        menuSprite.setPosition(MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
+        menuSprite.setOriginCenter();
 
+    }
     @Override
     public void show() {
 
@@ -116,8 +124,8 @@ public class GameState extends InputAdapter implements Screen {
         barriers.render(sb);
         menuItemBatch.begin();
         retrySprite.draw(menuItemBatch);
+        menuSprite.draw(menuItemBatch);
         menuItemBatch.end();
-        // TODO: 23/07/17 TEST ICIN YAZILDI !! ILERIDE SIL
     }
 
     @Override
@@ -137,7 +145,6 @@ public class GameState extends InputAdapter implements Screen {
         if(userArrow.isAttached()){
             return null;
         }
-      
         for(int i =0;i<elements.size();i++){
             if(elements.get(i) instanceof ActiveCircle){
                 ActiveCircle activeCircle = (ActiveCircle)elements.get(i);
@@ -172,18 +179,40 @@ public class GameState extends InputAdapter implements Screen {
         }
     }
 
+    Vector3 touchPoint = new Vector3();
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        if(!paused){
+            if(lastTouchedDownSprite == retrySprite){
+                camera.unproject(touchPoint.set(screenX,screenY,0));
+                if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
+                    game.setScreen(new GameState(game,this.levelIndex));
+                    return false;
+                }else{
+                    lastTouchedDownSprite = null;
+                }
+            }
+        }
+
+        return false;
+    }
+    private Sprite lastTouchedDownSprite = null;
     private long lastDetachTime =0;
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
         if(!paused){
+            camera.unproject(touchPoint.set(screenX,screenY,0));
+            if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
+                lastTouchedDownSprite = retrySprite;
+                return false;
+            }
+
             ActiveCircle activeCircle = userArrow.getAttached();
             if(activeCircle!=null){
                 activeCircle.detach();
             }
             userArrow.detach();
             lastDetachTime = System.currentTimeMillis();
-        }
-        if(screenX <= 100 ){
-            game.setScreen(new GameState(game,this.levelIndex));
         }
         return false;
     }
