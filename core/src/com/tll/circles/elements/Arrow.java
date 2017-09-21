@@ -19,7 +19,7 @@ public class Arrow extends Element{
     private ActiveCircle mActiveCircle;
     private boolean clockwise;
     public Vector3 velocity;
-
+    private ActiveCircle mLastAttachedCircle;
     public Sprite getSprite(){
         return mSprite;
     }
@@ -48,7 +48,11 @@ public class Arrow extends Element{
         mActiveCircle = activeCircle;
 
     }
+    public ActiveCircle getLastAttachedCircle(){
+        return mLastAttachedCircle;
+    }
     public void detach(){
+        mLastAttachedCircle = mActiveCircle;
         mActiveCircle = null;
     }
 

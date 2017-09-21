@@ -35,6 +35,8 @@ public class ThemeFactory {
             theme.arrow = AssetManager.WhiteTheme.defaultArrow;
             theme.backgroundColor = Color.WHITE;
             theme.lineColor = new Color(0.765f,0.886f,0.922f,0.7f);
+            theme.shieldActive = AssetManager.WhiteTheme.shieldActive;
+            theme.shieldNotActive = AssetManager.WhiteTheme.shield;
         }else if(name.equals("BLACK")){
             theme = new Theme();
             theme.menu = AssetManager.BlackTheme.menu;
@@ -45,6 +47,8 @@ public class ThemeFactory {
             theme.arrow = AssetManager.BlackTheme.defaultArrow;
             theme.backgroundColor = Color.BLACK;
             theme.lineColor = new Color(43f/255f,48/255f,49/255f,0.7f);
+            theme.shieldActive = AssetManager.BlackTheme.shieldActive;
+            theme.shieldNotActive = AssetManager.BlackTheme.shield;
         }
         return theme;
 

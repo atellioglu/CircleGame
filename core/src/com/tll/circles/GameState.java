@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -61,9 +62,7 @@ public class GameState extends InputAdapter implements Screen {
     // TODO: 18/09/17 Arka planda hata var tum ekrani kaplamiyor!!
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
-    //HUD
-    private Sprite retrySprite;
-    private Sprite menuSprite;
+
     private Theme theme;
     public GameState(MyGdxGame game,int levelIndex){
         this.game = game;
@@ -81,18 +80,6 @@ public class GameState extends InputAdapter implements Screen {
         shapeRenderer = new ShapeRenderer();
         Gdx.input.setInputProcessor(this);
         createHud();
-    }
-    private void createHud(){
-        retrySprite = new Sprite(theme.retry);
-        retrySprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
-        retrySprite.setPosition(MyGdxGame.WIDTH-MENU_ITEM_SIZE-MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
-        retrySprite.setOriginCenter();
-        menuSprite = new Sprite(theme.menu);
-        menuSprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
-        menuSprite.setPosition(MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
-        menuSprite.setOriginCenter();
-
-
     }
     @Override
     public void show() {
@@ -128,10 +115,7 @@ public class GameState extends InputAdapter implements Screen {
         userArrow.render(sb);
         sb.end();
         barriers.render(sb);
-        menuItemBatch.begin();
-        retrySprite.draw(menuItemBatch);
-        menuSprite.draw(menuItemBatch);
-        menuItemBatch.end();
+        renderHud();
     }
 
     @Override
@@ -142,21 +126,18 @@ public class GameState extends InputAdapter implements Screen {
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
     }
 
-
     private ActiveCircle checkAttach(){
-        // TODO: 23/07/17 Burayi duzelt!
-        if(System.currentTimeMillis() - lastDetachTime <=500){
-            return null;
-        }
         if(userArrow.isAttached()){
             return null;
         }
         for(int i =0;i<elements.size();i++){
             if(elements.get(i) instanceof ActiveCircle){
                 ActiveCircle activeCircle = (ActiveCircle)elements.get(i);
-                boolean collided = Util.isCollided(activeCircle.getSprite(),userArrow.getSprite());
-                if(collided)
-                    return activeCircle;
+                if(userArrow.getLastAttachedCircle()!=null && activeCircle != userArrow.getLastAttachedCircle()){
+                    boolean collided = Util.isCollided(activeCircle.getSprite(),userArrow.getSprite());
+                    if(collided)
+                        return activeCircle;
+                }
             }
         }
         return null;
@@ -231,6 +212,7 @@ public class GameState extends InputAdapter implements Screen {
         return false;
     }
     private void showMenu(){
+
     }
     private void loadMap(){
         //cemberleri olustur
@@ -308,5 +290,39 @@ public class GameState extends InputAdapter implements Screen {
     @Override
     public void dispose() {
 
+    }
+    //HUD
+    private Sprite retrySprite;
+    private Sprite menuSprite;
+    private Sprite levelTextSprite;
+    private Sprite circleSpriteBelowLevelText;
+
+    private void createHud(){
+        retrySprite = new Sprite(theme.retry);
+        retrySprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
+        retrySprite.setPosition(MyGdxGame.WIDTH-MENU_ITEM_SIZE-MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
+        retrySprite.setOriginCenter();
+        menuSprite = new Sprite(theme.menu);
+        menuSprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
+        menuSprite.setPosition(MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
+        menuSprite.setOriginCenter();
+        levelTextSprite = new Sprite(theme.level);
+        levelTextSprite.setSize(75,15);
+        levelTextSprite.setPosition(MENU_ITEM_SIZE_MARGIN,MyGdxGame.HEIGHT - levelTextSprite.getHeight() - MENU_ITEM_SIZE_MARGIN);
+        circleSpriteBelowLevelText = new Sprite(theme.circle);
+        circleSpriteBelowLevelText.setSize(75,75);
+        circleSpriteBelowLevelText.setPosition(levelTextSprite.getX(),levelTextSprite.getY() - circleSpriteBelowLevelText.getHeight() - MENU_ITEM_SIZE_MARGIN);
+
+    }
+    private void renderHud(){
+        menuItemBatch.setProjectionMatrix(camera.combined);
+        menuItemBatch.begin();
+        retrySprite.draw(menuItemBatch);
+        menuSprite.draw(menuItemBatch);
+        levelTextSprite.draw(menuItemBatch);
+        circleSpriteBelowLevelText.draw(menuItemBatch);
+        BitmapFont font = AssetManager.raviaBlue32;
+        font.draw(menuItemBatch,String.valueOf(this.levelIndex),circleSpriteBelowLevelText.getX()+circleSpriteBelowLevelText.getWidth()/2-16,circleSpriteBelowLevelText.getY()+circleSpriteBelowLevelText.getHeight()-20);
+        menuItemBatch.end();
     }
 }

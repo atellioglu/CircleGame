@@ -11,6 +11,7 @@ public class Theme {
     public Texture circle;
     public Texture endCircle;
     public Texture arrow;
+    public Texture shieldNotActive,shieldActive;
     public Color backgroundColor;
     public Color lineColor;
 }

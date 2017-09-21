@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="left-down" width="1" height="1" tilewidth="480" tileheight="800" nextobjectid="12">
- <layer name="background" width="1" height="1">
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="left-down" width="1" height="1" tilewidth="480" tileheight="800" nextobjectid="13">
+ <layer name="background" width="1" height="1" offsetx="-1" offsety="12">
   <data encoding="base64" compression="zlib">
    eJxjYGBgAAAABAAB
   </data>
@@ -11,17 +11,20 @@
     <property name="angle" type="float" value="5"/>
    </properties>
   </object>
-  <object id="3" type="0" x="160" y="400" width="160" height="160">
+  <object id="3" type="0" x="333" y="361" width="160" height="160">
    <properties>
     <property name="angle" type="float" value="5.5"/>
    </properties>
   </object>
   <object id="4" name="end" x="160" y="200" width="160" height="160"/>
+  <object id="12" type="0" x="158" y="399" width="160" height="160">
+   <properties>
+    <property name="angle" type="float" value="5.5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="stars">
   <object id="10" x="224" y="582" width="32" height="32"/>
  </objectgroup>
- <objectgroup name="barriers">
-  <object id="8" x="47.7612" y="343.284" width="20.8955" height="304.478"/>
- </objectgroup>
+ <objectgroup name="barriers"/>
 </map>
