@@ -15,13 +15,6 @@ public class AndroidLauncher extends AndroidApplication implements AdListener{
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Fabric.with(this, new Crashlytics());
-		/*RelativeLayout relativeLayout = new RelativeLayout(this);
-
-		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		MyGdxGame myGdxGame = new MyGdxGame();
-		myGdxGame.setAdListener(this);
-		View gameView = initializeForView(new MyGdxGame(),config);
-		relativeLayout.addView(gameView);*/
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		initialize(new MyGdxGame(),config);
 

@@ -52,7 +52,7 @@ public class GameState extends InputAdapter implements Screen {
     private int levelIndex;
     private OrthographicCamera camera;
     private Viewport viewport;
-
+    private int collectedStars = 0;
     private TmxMapLoader loader;
 
     private TiledMap tiledMap;
@@ -252,7 +252,14 @@ public class GameState extends InputAdapter implements Screen {
         }
         //yildizlari olustur
         for(MapObject object : tiledMap.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
-            Star star = new Star(((RectangleMapObject)object).getRectangle());
+            Star star = new Star(((RectangleMapObject)object).getRectangle(),1,userArrow);
+            star.setStarHitListener(new Star.StarHitListener() {
+                @Override
+                public void onHit(int value) {
+                    collectedStars += value;
+                    Gdx.app.log("CollectedStars",String.valueOf(collectedStars));
+                }
+            });
             elements.add(star);
             //Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
             //barriers.addRectangle(rectangle);
