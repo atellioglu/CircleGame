@@ -3,7 +3,7 @@
     package="com.tll.circles" >
 
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="24" />
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -19,6 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c2109b0a25045ee32c6fac8bfceeed651c899a0e" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

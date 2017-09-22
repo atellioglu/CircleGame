@@ -3,11 +3,20 @@
 
     <item
         is-multidex="false"
+        jar="C:\Users\abdullaht\.android\build-cache\9779b08449921e525186f5821faadd701303cd6a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7045152f3bd1870740b9bcb1cddff495e189774e">
+        <dex dex="C:\Users\abdullaht\Desktop\CircleGame\android\build\intermediates\pre-dexed\debug\classes_20f35cc8261c0e62c743aec85eca0c3c07f44676.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\abdullaht\Desktop\CircleGame\core\build\libs\core-1.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="555a0163a5328e51386732e78169db0de991b62c">
+        sha1="693028c956ee742ee1892efa41a17626fb1ce76a">
         <dex dex="C:\Users\abdullaht\Desktop\CircleGame\android\build\intermediates\pre-dexed\debug\core-1.0_8b33063bf9c90c062d8d6eb0c6c1795452cf28c3.jar" />
     </item>
     <item
@@ -36,6 +45,42 @@
         revision="25.0.0"
         sha1="047d1e9b890e364ec28f128e9bb3b9a12a94c164">
         <dex dex="C:\Users\abdullaht\Desktop\CircleGame\android\build\intermediates\pre-dexed\debug\gdx-1.9.6_2db07cb06732725d912546f60996ebcb3b562df5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\abdullaht\.android\build-cache\71ca573256920d392c05c0500aa9876988c694bb\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="646439081688c43e04ec4aa7ba6915ddfdcc337f">
+        <dex dex="C:\Users\abdullaht\Desktop\CircleGame\android\build\intermediates\pre-dexed\debug\classes_2343e9a1651394bc55404d72e38f06229eea3b9c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\abdullaht\.android\build-cache\19ebc0e5eb94f422e8ec44828f1b300c46815868\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="204f607419af8247cc1b2a61f50663c65f841c12">
+        <dex dex="C:\Users\abdullaht\Desktop\CircleGame\android\build\intermediates\pre-dexed\debug\classes_59b67d89dd1639fb718dcf4db73836c0690303da.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\abdullaht\.android\build-cache\ea51257a82ff55ff74a8299b42d4b60b918e54b7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="461929440e66685425a298693507f6fb27b0a872">
+        <dex dex="C:\Users\abdullaht\Desktop\CircleGame\android\build\intermediates\pre-dexed\debug\classes_c6313c71fcdd591233d147607f9e8c91c3f1e9bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\abdullaht\.android\build-cache\0d039d0837e2c51b0aedfcedfaaf85294983ed41\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="005d20a198159b87f65812fc5c51b2d84c5eba0a">
+        <dex dex="C:\Users\abdullaht\Desktop\CircleGame\android\build\intermediates\pre-dexed\debug\classes_22d418df98bded120df3c51a31f5891fb5d7cf9a.jar" />
     </item>
 
 </items>
