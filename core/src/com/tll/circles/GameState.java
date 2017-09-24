@@ -1,30 +1,23 @@
 package com.tll.circles;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.objects.CircleMapObject;
-import com.badlogic.gdx.maps.objects.EllipseMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Scaling;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.tll.circles.elements.ActiveCircle;
@@ -62,7 +55,7 @@ public class GameState extends InputAdapter implements Screen {
     // TODO: 18/09/17 Arka planda hata var tum ekrani kaplamiyor!!
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
-
+    private boolean showFailDialog = false,showSuccessDialog = false;
     private Theme theme;
     public GameState(MyGdxGame game,int levelIndex){
         this.game = game;
@@ -70,7 +63,6 @@ public class GameState extends InputAdapter implements Screen {
         this.levelIndex = levelIndex;
         camera = new OrthographicCamera();
         viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
-        //viewport = new FitViewport(MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
         loader = new TmxMapLoader();
         tiledMap = loader.load(String.format("level%d.tmx",levelIndex));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
@@ -78,12 +70,24 @@ public class GameState extends InputAdapter implements Screen {
         barriers = new Barrier();
         loadMap();
         shapeRenderer = new ShapeRenderer();
+        userArrow.setShapeRenderer(shapeRenderer);
+        userArrow.setAnimationListener(new Arrow.AnimationListener() {
+            @Override
+            public void onAnimationStart(boolean success) {
+
+            }
+
+            @Override
+            public void onAnimationFinish(boolean success) {
+                if(success){
+                    showSuccessDialog = true;
+                }else{
+                    showFailDialog = true;
+                }
+            }
+        });
         Gdx.input.setInputProcessor(this);
         createHud();
-    }
-    @Override
-    public void show() {
-
     }
     @Override
     public void render(float delta) {
@@ -103,7 +107,6 @@ public class GameState extends InputAdapter implements Screen {
             shapeRenderer.line(0,i,MyGdxGame.WIDTH,i);
         }
         shapeRenderer.end();
-
         tiledMapRenderer.render();
 
         sb.begin();
@@ -118,13 +121,6 @@ public class GameState extends InputAdapter implements Screen {
         renderHud();
     }
 
-    @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height, true);
-        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
-        barriers.getRenderer().setProjectionMatrix(viewport.getCamera().combined);
-        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
-    }
 
     private ActiveCircle checkAttach(){
         if(userArrow.isAttached()){
@@ -145,15 +141,20 @@ public class GameState extends InputAdapter implements Screen {
     public void update(float dt) {
         if(dt==0)
             return;
-        tiledMapRenderer.setView(camera);
-        if(barriers.checkCollision(userArrow.getSprite())){
-            Gdx.app.log("GG","EZ");
-            game.setScreen(new GameState(game,this.levelIndex));
+        if(userArrow.isDead()){
             return;
         }
+        tiledMapRenderer.setView(camera);
+        if(barriers.checkCollision(userArrow.getSprite())){
+            userArrow.die();
+            userArrow.update(dt);
+            return;
+        }
+
         ActiveCircle activeCircle = checkAttach();
         if(activeCircle != null){
             if(activeCircle instanceof EndCircle){
+                PreferenceHandler.saveInt(PreferenceHandler.STAR_KEY,PreferenceHandler.getInt(PreferenceHandler.STAR_KEY,0) + collectedStars);
                 nextLevel();
                 return;
             }
@@ -188,9 +189,7 @@ public class GameState extends InputAdapter implements Screen {
 
         return false;
     }
-
     private Sprite lastTouchedDownSprite = null;
-    private long lastDetachTime =0;
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if(!paused){
             camera.unproject(touchPoint.set(screenX,screenY,0));
@@ -207,7 +206,6 @@ public class GameState extends InputAdapter implements Screen {
                 activeCircle.detach();
             }
             userArrow.detach();
-            lastDetachTime = System.currentTimeMillis();
         }
         return false;
     }
@@ -240,6 +238,13 @@ public class GameState extends InputAdapter implements Screen {
                     case 1:
                         //safe olmayanlar
                         activeCircle = new ActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                        activeCircle.setTimeOutListener(new ActiveCircle.TimeoutListener() {
+                            @Override
+                            public void onTimeout() {
+                                userArrow.die();
+                                //game.setScreen(new GameState(game,GameState.this.levelIndex));
+                            }
+                        });
                         break;
 
                 }
@@ -277,20 +282,6 @@ public class GameState extends InputAdapter implements Screen {
         barriers.addRectangle(new Rectangle(0,MyGdxGame.HEIGHT-barrierThreshold,MyGdxGame.WIDTH,1));
     }
 
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
     public void nextLevel(){
         game.setScreen(new GameState(game,this.levelIndex+1));
     }
@@ -319,8 +310,8 @@ public class GameState extends InputAdapter implements Screen {
         circleSpriteBelowLevelText = new Sprite(theme.circle);
         circleSpriteBelowLevelText.setSize(75,75);
         circleSpriteBelowLevelText.setPosition(levelTextSprite.getX(),levelTextSprite.getY() - circleSpriteBelowLevelText.getHeight() - MENU_ITEM_SIZE_MARGIN);
-
     }
+
     private void renderHud(){
         menuItemBatch.setProjectionMatrix(camera.combined);
         menuItemBatch.begin();
@@ -331,5 +322,37 @@ public class GameState extends InputAdapter implements Screen {
         BitmapFont font = AssetManager.raviaBlue32;
         font.draw(menuItemBatch,String.valueOf(this.levelIndex),circleSpriteBelowLevelText.getX()+circleSpriteBelowLevelText.getWidth()/2-16,circleSpriteBelowLevelText.getY()+circleSpriteBelowLevelText.getHeight()-20);
         menuItemBatch.end();
+    }
+
+
+
+
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width, height, true);
+        camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
+        barriers.getRenderer().setProjectionMatrix(viewport.getCamera().combined);
+        shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
+    }
+
+    @Override
+    public void show() {
+
     }
 }

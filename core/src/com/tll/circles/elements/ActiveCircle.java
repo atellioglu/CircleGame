@@ -1,11 +1,9 @@
 package com.tll.circles.elements;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.tll.circles.AssetManager;
 import com.tll.circles.Size;
 import com.tll.circles.ThemeFactory;
 
@@ -75,18 +73,22 @@ public class ActiveCircle extends Element {
         if(attachedArrow!=null){
             mSprite.rotate(-getRotationAngleSpeed());
             if(!(this instanceof SafeActiveCircle)){
-                currentUpdateTime += dt;
-                Gdx.app.log("TEST",String.valueOf(currentUpdateTime));
-                if(currentUpdateTime - lastAlphaUpdateTime > 0.5f){
-                    alpha -= 0.1f;
-                    lastAlphaUpdateTime = currentUpdateTime;
+                alpha -= dt/mTimeout;
+                if(alpha <= 0){
+                    Gdx.app.log("TEST","YANDI");
+                    listener.onTimeout();
+                    return;
+                }else{
                     mSprite.setAlpha(alpha);
-                    if(alpha <= 0){
-                        Gdx.app.log("TEST","YANDI");
-                    }
                 }
             }
         }
-
+    }
+    public void setTimeOutListener(TimeoutListener listener){
+        this.listener = listener;
+    }
+    private TimeoutListener listener;
+    public interface TimeoutListener{
+        void onTimeout();
     }
 }

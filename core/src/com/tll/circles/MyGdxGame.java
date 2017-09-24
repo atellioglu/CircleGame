@@ -22,8 +22,8 @@ public class MyGdxGame extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		Gdx.input.setCatchBackKey(true);
-		ThemeFactory.setInstance("WHITE");
-		setScreen(new GameState(this,1));
+		ThemeFactory.setInstance("BLACK");
+		setScreen(new GameState(this,6));
 	}
 
 	@Override

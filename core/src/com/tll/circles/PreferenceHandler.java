@@ -8,6 +8,9 @@ import com.badlogic.gdx.Preferences;
  */
 public class PreferenceHandler {
     private static final String PREFERENCE_NAME = "DefaultPref";
+    public static final String STAR_KEY = "STAR_KEY";
+    public static final String MAX_LEVEL_KEY = "MAX_LEVEL_KEY";
+
     public static String getString(String key,String def){
         Preferences preferences = Gdx.app.getPreferences(PREFERENCE_NAME);
         return preferences.getString(key,def);
