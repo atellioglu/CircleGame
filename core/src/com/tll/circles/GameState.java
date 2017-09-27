@@ -88,6 +88,7 @@ public class GameState extends InputAdapter implements Screen {
         });
         Gdx.input.setInputProcessor(this);
         createHud();
+        PreferenceHandler.saveCurrentLevel(levelIndex);
     }
     @Override
     public void render(float delta) {
@@ -210,7 +211,7 @@ public class GameState extends InputAdapter implements Screen {
         return false;
     }
     private void showMenu(){
-
+        game.setScreen(new MenuState(game));
     }
     private void loadMap(){
         //cemberleri olustur

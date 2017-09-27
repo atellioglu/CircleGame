@@ -14,4 +14,9 @@ public class Theme {
     public Texture shieldNotActive,shieldActive;
     public Color backgroundColor;
     public Color lineColor;
+    public Texture menuStartText,menuLevelText,menuVoiceText,menuThemeText;
+    public Texture menuThemeSwitch;
+    public Texture menuIcon;
+    public Color menuBackgroundColor;
+    public Texture menuCircle;
 }

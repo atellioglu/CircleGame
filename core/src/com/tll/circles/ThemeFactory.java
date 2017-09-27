@@ -10,6 +10,8 @@ public class ThemeFactory {
     private Theme currentTheme;
 
     public static ThemeFactory getInstance(){
+        if(instance == null)
+            setInstance(PreferenceHandler.getCurrentTheme());
         return instance;
     }
     public static void setInstance(String themeName){
@@ -37,6 +39,14 @@ public class ThemeFactory {
             theme.lineColor = new Color(0.765f,0.886f,0.922f,0.7f);
             theme.shieldActive = AssetManager.WhiteTheme.shieldActive;
             theme.shieldNotActive = AssetManager.WhiteTheme.shield;
+            theme.menuStartText = AssetManager.WhiteTheme.menuStartText;
+            theme.menuLevelText = AssetManager.WhiteTheme.menuLevelText;
+            theme.menuVoiceText = AssetManager.WhiteTheme.menuVoiceText;
+            theme.menuThemeText = AssetManager.WhiteTheme.menuThemeText;
+            theme.menuThemeSwitch = AssetManager.WhiteTheme.menuThemeSwitch;
+            theme.menuBackgroundColor = Color.WHITE;
+            theme.menuIcon = AssetManager.WhiteTheme.gameIcon;
+            theme.menuCircle = AssetManager.WhiteTheme.menuEllipseCircle;
         }else if(name.equals("BLACK")){
             theme = new Theme();
             theme.menu = AssetManager.BlackTheme.menu;
