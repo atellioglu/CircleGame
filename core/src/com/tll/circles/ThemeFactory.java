@@ -55,8 +55,8 @@ public class ThemeFactory {
             theme.circle = AssetManager.BlackTheme.circle;
             theme.endCircle = AssetManager.BlackTheme.endCircle;
             theme.arrow = AssetManager.BlackTheme.defaultArrow;
-            theme.backgroundColor = Color.BLACK;
-            theme.lineColor = new Color(43f/255f,48/255f,49/255f,0.7f);
+            theme.backgroundColor = new Color(32f/255,32f/255,32f/255,1);
+            theme.lineColor = new Color(38f/255f,38/255f,39/255f,0.9f);
             theme.shieldActive = AssetManager.BlackTheme.shieldActive;
             theme.shieldNotActive = AssetManager.BlackTheme.shield;
         }

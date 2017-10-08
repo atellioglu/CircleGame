@@ -15,7 +15,7 @@ import com.tll.circles.ThemeFactory;
 public class Arrow extends Element{
 
     private static final int VELOCITYX = 250,VELOCITYY = 250;
-    private static final int WIDTH = 48,HEIGHT = 48;
+    private static final int WIDTH = 48,HEIGHT = 26;
     //okun uzerinde bulundugu yuvarlak!
     private ActiveCircle mActiveCircle;
     public Vector3 velocity;
@@ -24,6 +24,8 @@ public class Arrow extends Element{
     private boolean dead = false;
     private boolean visibility = true;
     private float alpha = 1;
+    private float oldPositionThreshold = 0.3f;
+
     public Sprite getSprite(){
         return mSprite;
     }

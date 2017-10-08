@@ -36,6 +36,7 @@ public class Barrier extends Element {
     public void render(SpriteBatch sb) {
         renderer.begin(ShapeRenderer.ShapeType.Filled);
         renderer.setColor(0.09f,0.89f,0.933f,1f);
+        /*
         for(int i =0;i<rectangles.size();i++){
             Rectangle rec = rectangles.get(i);
             if(rec.getWidth() > rec.getHeight()){
@@ -49,6 +50,10 @@ public class Barrier extends Element {
                 }
             }
 
+        }*/
+        for (int i =0;i<rectangles.size();i++){
+            Rectangle rec = rectangles.get(i);
+            renderer.rect(rec.x,rec.y,rec.getWidth(),rec.getHeight());
         }
 
         renderer.end();

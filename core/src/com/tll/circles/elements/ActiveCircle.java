@@ -3,6 +3,7 @@ package com.tll.circles.elements;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.Size;
 import com.tll.circles.ThemeFactory;
@@ -24,6 +25,7 @@ public class ActiveCircle extends Element {
         mSprite.setSize(size.width, size.height);
         mSprite.setPosition(position.x, position.y);
         mSprite.setOriginCenter();
+
     }
     public void setRotationAngleSpeed(float rotationAngleSpeed){
         mRotationAngleSpeed  = rotationAngleSpeed;

@@ -98,6 +98,7 @@ public class GameState extends InputAdapter implements Screen {
         Gdx.gl.glClearColor(bg.r, bg.g, bg.b, bg.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
+
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         Color line = ThemeFactory.getInstance().getTheme().lineColor;
         shapeRenderer.setColor(line.r,line.g,line.b,line.a);
@@ -108,6 +109,7 @@ public class GameState extends InputAdapter implements Screen {
             shapeRenderer.line(0,i,MyGdxGame.WIDTH,i);
         }
         shapeRenderer.end();
+
         tiledMapRenderer.render();
 
         sb.begin();
