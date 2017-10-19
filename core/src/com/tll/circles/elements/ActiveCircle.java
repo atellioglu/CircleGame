@@ -72,22 +72,20 @@ public class ActiveCircle extends Element {
     public void update(float dt) {
         if(attachedArrow!=null){
             mSprite.rotate(-getRotationAngleSpeed());
-            if(!(this instanceof SafeActiveCircle)){
-                alpha -= dt/mTimeout;
-                if(alpha <= 0){
-                    Gdx.app.log("TEST","YANDI");
-                    listener.onTimeout();
-                    return;
-                }else{
-                    mSprite.setAlpha(alpha);
-                }
+            alpha -= dt/mTimeout;
+            if(alpha <= 0){
+                Gdx.app.log("TEST","YANDI");
+                listener.onTimeout();
+                return;
+            }else{
+                mSprite.setAlpha(alpha);
             }
         }
     }
     public void setTimeOutListener(TimeoutListener listener){
         this.listener = listener;
     }
-    private TimeoutListener listener;
+    protected TimeoutListener listener;
     public interface TimeoutListener{
         void onTimeout();
     }

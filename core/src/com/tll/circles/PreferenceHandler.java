@@ -18,7 +18,6 @@ public class PreferenceHandler {
     public static int getInt(String key,int defValue){
         Preferences preferences = Gdx.app.getPreferences(PREFERENCE_NAME);
         return preferences.getInteger(key,defValue);
-
     }
     public static void saveBoolean(String key,boolean value){
         Preferences preferences = Gdx.app.getPreferences(PREFERENCE_NAME);
@@ -41,7 +40,7 @@ public class PreferenceHandler {
         preferences.flush();
     }
     public static int getCurrentLevel(){
-        return getInt(CURRENT_LEVEL,1);
+        return getInt(CURRENT_LEVEL,11);
     }
     public static String getCurrentTheme(){
         return getString(CURRENT_THEME,"WHITE");

@@ -1,5 +1,6 @@
 package com.tll.circles.elements;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -38,6 +39,8 @@ public class SafeActiveCircle extends ActiveCircle {
 
     @Override
     public void update(float dt) {
-        super.update(dt);
+        if(attachedArrow!=null){
+            mSprite.rotate(-getRotationAngleSpeed());
+        }
     }
 }

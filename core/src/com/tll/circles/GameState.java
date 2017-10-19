@@ -25,6 +25,7 @@ import com.tll.circles.elements.Arrow;
 import com.tll.circles.elements.Barrier;
 import com.tll.circles.elements.Element;
 import com.tll.circles.elements.EndCircle;
+import com.tll.circles.elements.FadeActiveCircle;
 import com.tll.circles.elements.SafeActiveCircle;
 import com.tll.circles.elements.Star;
 import com.tll.circles.util.Util;
@@ -128,7 +129,7 @@ public class GameState extends InputAdapter implements Screen {
             return null;
         }
         for(int i =0;i<elements.size();i++){
-            if(elements.get(i) instanceof ActiveCircle){
+            if(elements.get(i).hasInteraction() && elements.get(i) instanceof ActiveCircle){
                 ActiveCircle activeCircle = (ActiveCircle)elements.get(i);
                 if(userArrow.getLastAttachedCircle()!=null && activeCircle != userArrow.getLastAttachedCircle()){
                     boolean collided = Util.isCollided(activeCircle.getSprite(),userArrow.getSprite());
@@ -152,6 +153,10 @@ public class GameState extends InputAdapter implements Screen {
             return;
         }
 
+        for(int i =0;i<elements.size();i++){
+            elements.get(i).update(dt);
+        }
+
         ActiveCircle activeCircle = checkAttach();
         if(activeCircle != null){
             if(activeCircle instanceof EndCircle){
@@ -163,9 +168,6 @@ public class GameState extends InputAdapter implements Screen {
             activeCircle.attach(userArrow);
         }
 
-        for(int i =0;i<elements.size();i++){
-            elements.get(i).update(dt);
-        }
     }
 
     Vector3 touchPoint = new Vector3();
@@ -247,7 +249,18 @@ public class GameState extends InputAdapter implements Screen {
                             }
                         });
                         break;
-
+                    case 2:
+                        activeCircle = new FadeActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                        FadeActiveCircle fadeActiveCircle = (FadeActiveCircle)activeCircle;
+                        fadeActiveCircle.setFadeTime(Float.parseFloat(String.valueOf(object.getProperties().get("fadeTime"))));
+                        fadeActiveCircle.setWaitTime(Float.parseFloat(String.valueOf(object.getProperties().get("waitTime"))));
+                        activeCircle.setTimeOutListener(new ActiveCircle.TimeoutListener() {
+                            @Override
+                            public void onTimeout() {
+                                userArrow.die();
+                            }
+                        });
+                        break;
                 }
             }
             if(object.getProperties().get("angle")!=null){
