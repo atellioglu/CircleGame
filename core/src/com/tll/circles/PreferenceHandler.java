@@ -40,10 +40,10 @@ public class PreferenceHandler {
         preferences.flush();
     }
     public static int getCurrentLevel(){
-        return getInt(CURRENT_LEVEL,11);
+        return getInt(CURRENT_LEVEL,1);
     }
     public static String getCurrentTheme(){
-        return getString(CURRENT_THEME,"WHITE");
+        return getString(CURRENT_THEME,"BLACK");
     }
     public static void setCurrentTheme(String theme){
         saveString(CURRENT_THEME,theme);

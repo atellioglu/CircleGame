@@ -1,6 +1,7 @@
 package com.tll.circles.elements;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.Size;
@@ -15,6 +16,13 @@ public class FadeActiveCircle extends ActiveCircle {
     private float waitDelta = 0.0f;
     private FadeStates state;
     private float remainingUntilInvisible;
+
+    public FadeActiveCircle(Texture texture, Size size, Vector3 position) {
+        super(texture, size, position);
+        state = FadeStates.VISIBLE;
+        remainingUntilInvisible = waitTime + fadeTime;
+    }
+
     public FadeActiveCircle(Size size, Vector3 position) {
         super(size, position);
         state = FadeStates.VISIBLE;

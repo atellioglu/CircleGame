@@ -24,5 +24,4 @@
             android:value="c2109b0a25045ee32c6fac8bfceeed651c899a0e" />
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

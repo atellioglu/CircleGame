@@ -16,6 +16,12 @@ public class AssetManager {
     public static final Texture menuStartIcon = new Texture("main/start_icon.png");
     public static final Texture menuLevelIcon = new Texture("main/level_icon.png");
     public static final Texture menuSoundOnIcon = new Texture("main/sound_on.png");
+    public static final Texture[] circles = new Texture[]{
+            new Texture("circles/circle_type_0.png"),
+            new Texture("circles/circle_type_1.png"),
+            new Texture("circles/circle_type_2.png"),
+            new Texture("circles/circle_type_3.png")
+    };
     public static class WhiteTheme{
         public static final Texture shield = new Texture("shield_not_active_white_theme.png");
         public static final Texture shieldActive = new Texture("shield_active_white_theme.png");

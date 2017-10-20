@@ -1,0 +1,39 @@
+<html>
+<head>
+
+</head>
+<body>
+<h1>Harita Oluşturma Yöntemi</h1>
+<p>
+    Haritanın 480 x 1000 olarak oluşturulması gerekiyor. Oluşturulan nesneler için en alt seviye 100 en üst seviye 900 pozisyonu olmalıdır.
+
+</p>
+<h1>Level Oluşturma Yöntemi</h1>
+<p><b>Levellarda bulunan nesneler.</b></p>
+<p>Bütün bölümler object layer tarafından üretilir. Oyundaki tüm nesneler bu layerda oluşturulacak</p>
+<p>1. Layer : Çemberler <br> 2. Layer : Yıldızlar <br> 3. Layer : Bariyerler</p>
+<p><b>Bütün nesneler Rectangle object olarak oluşturulmalı</b></p>
+<hr>
+<p><h2>Çember nesnelerinin özellikleri</h2></p>
+<p>Çemberlerin her birinde(bitiş çemberi dahil değil) angle propertysi <b>olmak</b> zorundadır.<br>
+Nesne seçilerek(tiled'da üstte bulunan en nokta noktaların sağındaki seçenek) sol alttaki custom propertiesten + ile float değişkeni eklenir.<br>
+Bu angle değeri çemberin dönüş hızını belirliyor.</p>
+<p>Ayrıca çember nesnelerinde sol üstteki pencerede Type değerinin 0, 1 ,2 olması gerekmektedir.<br>
+<ul>
+    <li>0 : Çemberin hiç bir zaman yok olmayacağını belirtir.</li>
+    <li>1 : Çemberin belirli bir süre içerisinde yok olacağını belirtir. Type 1 yapılırsa eğer altta custom property olarak timeout süresi verilmelidir. Float cinsinden olmalı</li>
+    <li>2 : Çemberin bir yok olup bir görüneceğini gösterir. Bu çembere property olarak fadeTime(Float tipinde) değeri verilmeli. Bu değer çemberin ne araklıklar ile görünür veya görünmez olacağını belirler. Ayrıca görünmez kalacağı süre için waitTime(Float tipinde) değer verilmelidir. </li>
+</ul></p>
+<p>
+    Bunlara ek olarak 2 çember daha olmalı oyunda, başlangıç ve bitiş çemberi...<br>
+    Bu çemberlerin oluşturulması için sol üstte bulunan kısımda çemberlerin ismine start veya end yazılmalı. Bu çemberler için type propertysi gerekli değil ancak <b>angle gerekli!</b>
+</p>
+<hr>
+<p><h2>Yıldız nesnelerinin özellikleri</h2></p>
+<p>Her bir yıldıza value değeri atanmalı! Bu değer sayesinde kullanıcının topladığı yıldızların bir değeri olacak.(Büyük yıldızların valuesi büyük olsun :))</p>
+<hr>
+<p><h2>Bariyerler</h2></p>
+<p>Bariyerlerin her biri rectangle nesnesi olacak. Genişliği veya yüksekliği en fazla 3 px olsun.</p>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -221,7 +222,7 @@ public class GameState extends InputAdapter implements Screen {
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
             ActiveCircle activeCircle = null;
             if(object.getName()!=null && object.getName().equals("start")){
-                activeCircle = new SafeActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                activeCircle = new SafeActiveCircle(AssetManager.circles[0],new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
                 userArrow = new Arrow(activeCircle);
                 activeCircle.attach(userArrow);
                 elements.add(userArrow);
@@ -232,15 +233,15 @@ public class GameState extends InputAdapter implements Screen {
                 if(object.getProperties().get("type")!= null){
                     type = Integer.parseInt(String.valueOf(object.getProperties().get("type")));
                 }
-
+                Texture selectedTypeTexture = AssetManager.circles[type];
                 switch (type){
                     case 0:
                         //safe olanlar
-                        activeCircle = new SafeActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                        activeCircle = new SafeActiveCircle(selectedTypeTexture,new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
                         break;
                     case 1:
                         //safe olmayanlar
-                        activeCircle = new ActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                        activeCircle = new ActiveCircle(selectedTypeTexture,new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
                         activeCircle.setTimeOutListener(new ActiveCircle.TimeoutListener() {
                             @Override
                             public void onTimeout() {
@@ -250,7 +251,7 @@ public class GameState extends InputAdapter implements Screen {
                         });
                         break;
                     case 2:
-                        activeCircle = new FadeActiveCircle(new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
+                        activeCircle = new FadeActiveCircle(selectedTypeTexture,new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
                         FadeActiveCircle fadeActiveCircle = (FadeActiveCircle)activeCircle;
                         fadeActiveCircle.setFadeTime(Float.parseFloat(String.valueOf(object.getProperties().get("fadeTime"))));
                         fadeActiveCircle.setWaitTime(Float.parseFloat(String.valueOf(object.getProperties().get("waitTime"))));

@@ -210,14 +210,7 @@
                     "endOffset": 147
                 },
                 "from": {
-                    "file": "C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 57,
-                        "endColumn": 51,
-                        "endOffset": 104
-                    }
+                    "file": "C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml"
                 }
             },
             {
@@ -249,15 +242,7 @@
                     "endOffset": 775
                 },
                 "from": {
-                    "file": "C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 19,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 484
-                    }
+                    "file": "C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml"
                 }
             }
         ]

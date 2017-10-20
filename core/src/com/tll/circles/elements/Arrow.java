@@ -1,5 +1,6 @@
 package com.tll.circles.elements;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -8,12 +9,18 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.ThemeFactory;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 
 /**
  * Created by abdullahtellioglu on 09/07/17.
  */
 public class Arrow extends Element{
-
+    private static final float SHADOW_ANIMATION_DELTA = 0.20f;
     private static final int VELOCITYX = 250,VELOCITYY = 250;
     private static final int WIDTH = 48,HEIGHT = 48;
     //okun uzerinde bulundugu yuvarlak!
@@ -24,6 +31,7 @@ public class Arrow extends Element{
     private boolean dead = false;
     private boolean visibility = true;
     private float alpha = 1;
+    private List<ArrowShadow> shadowAnimation;
     public Sprite getSprite(){
         return mSprite;
     }
@@ -36,6 +44,7 @@ public class Arrow extends Element{
         mActiveCircle = activeCircle;
         velocity = new Vector3(VELOCITYX,VELOCITYY,0);
         mSprite.setOriginCenter();
+        shadowAnimation = new ArrayList<ArrowShadow>(10);
     }
     public ActiveCircle getAttached(){
         return mActiveCircle;
@@ -75,16 +84,25 @@ public class Arrow extends Element{
     public boolean isDead(){
         return dead;
     }
+    private float lastAnimationUpdateDelta = 0.0f;
     @Override
     public void render(SpriteBatch sb) {
-
         mSprite.draw(sb);
+        int i =0;
+        while(i < shadowAnimation.size()){
+            ArrowShadow arrowShadow = shadowAnimation.get(i);
+            arrowShadow.render(sb);
+            i++;
+        }
     }
 
     @Override
     public void update(float dt) {
-        if(dead)
+        if(dead){
+            shadowAnimation.clear();
             return;
+        }
+
         if(!visibility){
             alpha -= dt/ 0.50f;
             if(alpha <= 0){
@@ -94,6 +112,17 @@ public class Arrow extends Element{
             }
             return;
         }
+        int i =0;
+        while(i < shadowAnimation.size()){
+            ArrowShadow arrowShadow = shadowAnimation.get(i);
+            if(arrowShadow.alpha <= 0){
+                shadowAnimation.remove(arrowShadow);
+                Gdx.app.log(Arrow.class.getSimpleName(),"Removed Animation");
+            }else{
+                arrowShadow.update(dt);
+            }
+            i++;
+        }
 
         float xx,yy;
         if(mActiveCircle == null){
@@ -102,8 +131,17 @@ public class Arrow extends Element{
             xx =  current.x + (float)Math.cos(Math.toRadians(rotationAngle)) *velocity.x * dt;
             yy =  current.y + (float)Math.sin(Math.toRadians(rotationAngle)) *velocity.y * dt;
             mSprite.setPosition(xx,yy);
+            lastAnimationUpdateDelta += dt;
+            if(lastAnimationUpdateDelta >= SHADOW_ANIMATION_DELTA){
+                //yeni bir tane cizilecek!
+                shadowAnimation.add(new ArrowShadow());
+                Gdx.app.log(Arrow.class.getSimpleName(),"New Animation");
+                lastAnimationUpdateDelta = 0;
+            }
             //duz ilerleme!
         }else{
+            shadowAnimation.clear();
+            lastAnimationUpdateDelta = 0;
             mSprite.rotate(-mActiveCircle.getRotationAngleSpeed());
             float rotationAngle = mSprite.getRotation();
             // TODO: 18/09/17  mActiveCircle.getWidth()/2-5  yerine daha duzgun bir cozum bul!
@@ -119,7 +157,6 @@ public class Arrow extends Element{
 
     public Vector2 calculateOrbit(float currentOrbitDegrees, float distanceFromCenterPoint, Vector2 centerPoint) {
         float radians = (float)Math.toRadians(currentOrbitDegrees);
-
         float x = (float)(Math.cos(radians) * distanceFromCenterPoint) + centerPoint.x;
         float y = (float)(Math.sin(radians) * distanceFromCenterPoint) + centerPoint.y;
 
@@ -140,6 +177,39 @@ public class Arrow extends Element{
         }
         public void render(SpriteBatch sb){
 
+        }
+    }
+    private class ArrowShadow extends Element{
+        private float alpha = 0.8f;
+        private static final float ANIMATION_FINISH_TIME = 0.5f;
+        public ArrowShadow() {
+            mSprite = new Sprite(Arrow.this.mSprite);
+            mSprite.setAlpha(alpha);
+        }
+
+        @Override
+        public void render(SpriteBatch sb) {
+            mSprite.draw(sb);
+        }
+
+        @Override
+        public void update(float dt) {
+            alpha -= dt/ANIMATION_FINISH_TIME;
+            if(alpha <= 0)
+                alpha = 0;
+            float scale = mSprite.getScaleX();
+            scale -= dt/ ANIMATION_FINISH_TIME;
+            mSprite.setScale(scale);
+            Gdx.app.log(ArrowShadow.class.getSimpleName(),String.valueOf(mSprite.getScaleX()));
+            mSprite.setAlpha(alpha);
+        }
+
+        @Override
+        public String toString() {
+            return "ArrowShadow{" +
+                    "alpha=" + alpha +
+                    "position =" +mSprite.getX() +" , "+mSprite.getY()+
+                    '}';
         }
     }
 }

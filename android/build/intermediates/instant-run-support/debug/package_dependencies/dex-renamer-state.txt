@@ -1,0 +1,25 @@
+#Fri Oct 20 14:18:17 EEST 2017
+renamed.7=classes2.dex
+renamed.6=classes3.dex
+renamed.5=classes4.dex
+renamed.4=classes6.dex
+renamed.3=classes5.dex
+renamed.2=classes8.dex
+renamed.1=classes.dex
+renamed.0=classes7.dex
+base.7=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_22d418df98bded120df3c51a31f5891fb5d7cf9a
+base.6=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_2343e9a1651394bc55404d72e38f06229eea3b9c
+base.5=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_59b67d89dd1639fb718dcf4db73836c0690303da
+base.4=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\gdx-1.9.6_2db07cb06732725d912546f60996ebcb3b562df5
+base.3=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_c6313c71fcdd591233d147607f9e8c91c3f1e9bd
+base.2=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\gdx-box2d-1.9.6_5c12e0e87328cb279b06cecf67e155725d29c5a9
+base.1=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_20f35cc8261c0e62c743aec85eca0c3c07f44676
+base.0=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\gdx-backend-android-1.9.6_f61885915ab051134b6e938d444b78b56ce392db
+file.7=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_22d418df98bded120df3c51a31f5891fb5d7cf9a\\classes.dex
+file.6=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_2343e9a1651394bc55404d72e38f06229eea3b9c\\classes.dex
+file.5=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_59b67d89dd1639fb718dcf4db73836c0690303da\\classes.dex
+file.4=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\gdx-1.9.6_2db07cb06732725d912546f60996ebcb3b562df5\\classes.dex
+file.3=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_c6313c71fcdd591233d147607f9e8c91c3f1e9bd\\classes.dex
+file.2=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\gdx-box2d-1.9.6_5c12e0e87328cb279b06cecf67e155725d29c5a9\\classes.dex
+file.1=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_20f35cc8261c0e62c743aec85eca0c3c07f44676\\classes.dex
+file.0=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\gdx-backend-android-1.9.6_f61885915ab051134b6e938d444b78b56ce392db\\classes.dex

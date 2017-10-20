@@ -1,6 +1,7 @@
 package com.tll.circles.elements;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -17,6 +18,10 @@ public class SafeActiveCircle extends ActiveCircle {
     private Sprite shieldActive;
 
 
+    public SafeActiveCircle(Texture texture, Size size, Vector3 position) {
+        super(texture, size, position);
+    }
+
     public SafeActiveCircle(Size size, Vector3 position) {
         super(size, position);
         shieldNotActive = new Sprite(ThemeFactory.getInstance().getTheme().shieldNotActive);
@@ -31,9 +36,11 @@ public class SafeActiveCircle extends ActiveCircle {
     public void render(SpriteBatch sb) {
         super.render(sb);
         if(attachedArrow == null){
-            shieldNotActive.draw(sb);
+            if(shieldNotActive!=null)
+                shieldNotActive.draw(sb);
         }else{
-            shieldActive.draw(sb);
+            if(shieldActive!=null)
+                shieldActive.draw(sb);
         }
     }
 

@@ -1,6 +1,7 @@
 package com.tll.circles.elements;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
@@ -19,11 +20,14 @@ public class ActiveCircle extends Element {
     private float lastAlphaUpdateTime;
     private float currentUpdateTime;
     private float alpha = 1.0f;
-    public ActiveCircle (Size size,Vector3 position){
-        mSprite = new Sprite(ThemeFactory.getInstance().getTheme().circle);
+    public ActiveCircle(Texture texture, Size size, Vector3 position){
+        mSprite = new Sprite(texture);
         mSprite.setSize(size.width, size.height);
         mSprite.setPosition(position.x, position.y);
         mSprite.setOriginCenter();
+    }
+    public ActiveCircle (Size size,Vector3 position){
+        this(ThemeFactory.getInstance().getTheme().circle,size,position);
     }
     public void setRotationAngleSpeed(float rotationAngleSpeed){
         mRotationAngleSpeed  = rotationAngleSpeed;
