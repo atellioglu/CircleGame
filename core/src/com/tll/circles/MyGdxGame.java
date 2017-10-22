@@ -3,6 +3,7 @@ package com.tll.circles;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGdxGame extends Game {
@@ -22,7 +23,13 @@ public class MyGdxGame extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		Gdx.input.setCatchBackKey(true);
+		for(int i =0;i<AssetManager.circles.length;i++){
+			AssetManager.circles[i].setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
+		}
+		AssetManager.star.setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
 		setScreen(new GameState(this,1));
+
+		//setScreen(new GameState(this,PreferenceHandler.getCurrentLevel()));
 	}
 
 	@Override

@@ -66,7 +66,7 @@ public class GameState extends InputAdapter implements Screen {
         camera = new OrthographicCamera();
         viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
         loader = new TmxMapLoader();
-        tiledMap = loader.load(String.format("level%d.tmx",levelIndex));
+        tiledMap = loader.load(String.format("levels/level%d.tmx",levelIndex));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
         elements = new ArrayList<Element>();
         barriers = new Barrier();
@@ -97,8 +97,10 @@ public class GameState extends InputAdapter implements Screen {
         update(delta);
         SpriteBatch sb = game.batch;
         Color bg = ThemeFactory.getInstance().getTheme().backgroundColor;
-        Gdx.gl.glClearColor(bg.r, bg.g, bg.b, bg.a);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClearColor(bg.r, bg.g, bg.b, bg.a);
+        //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT| GL20.GL_DEPTH_BUFFER_BIT |(Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
+
         sb.setProjectionMatrix(camera.combined);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         Color line = ThemeFactory.getInstance().getTheme().lineColor;
@@ -168,7 +170,6 @@ public class GameState extends InputAdapter implements Screen {
             userArrow.attach(activeCircle);
             activeCircle.attach(userArrow);
         }
-
     }
 
     Vector3 touchPoint = new Vector3();
@@ -249,12 +250,18 @@ public class GameState extends InputAdapter implements Screen {
                                 //game.setScreen(new GameState(game,GameState.this.levelIndex));
                             }
                         });
+                        try{
+                            activeCircle.setTimeOut(Float.parseFloat(String.valueOf(object.getProperties().get("timeOut"))));
+                        }catch (Exception ex){
+
+                        }
                         break;
                     case 2:
                         activeCircle = new FadeActiveCircle(selectedTypeTexture,new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
                         FadeActiveCircle fadeActiveCircle = (FadeActiveCircle)activeCircle;
                         fadeActiveCircle.setFadeTime(Float.parseFloat(String.valueOf(object.getProperties().get("fadeTime"))));
-                        fadeActiveCircle.setWaitTime(Float.parseFloat(String.valueOf(object.getProperties().get("waitTime"))));
+                        fadeActiveCircle.setVisibleTime(Float.parseFloat(String.valueOf(object.getProperties().get("visibleTime"))));
+                        fadeActiveCircle.setInvisibleTime(Float.parseFloat(String.valueOf(object.getProperties().get("invisibleTime"))));
                         activeCircle.setTimeOutListener(new ActiveCircle.TimeoutListener() {
                             @Override
                             public void onTimeout() {
@@ -331,9 +338,9 @@ public class GameState extends InputAdapter implements Screen {
         menuItemBatch.setProjectionMatrix(camera.combined);
         menuItemBatch.begin();
         retrySprite.draw(menuItemBatch);
-        menuSprite.draw(menuItemBatch);
+        //menuSprite.draw(menuItemBatch);
         levelTextSprite.draw(menuItemBatch);
-        circleSpriteBelowLevelText.draw(menuItemBatch);
+        //circleSpriteBelowLevelText.draw(menuItemBatch);
         BitmapFont font = AssetManager.raviaBlue32;
         font.draw(menuItemBatch,String.valueOf(this.levelIndex),circleSpriteBelowLevelText.getX()+circleSpriteBelowLevelText.getWidth()/2-16,circleSpriteBelowLevelText.getY()+circleSpriteBelowLevelText.getHeight()-20);
         menuItemBatch.end();

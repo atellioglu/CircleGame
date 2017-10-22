@@ -1,7 +1,4 @@
-#Fri Oct 20 14:18:22 EEST 2017
-base.0=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_f3950ba3428f913d7fe97b5fd781aa6f6ddf2fb6
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c0be1d8b1c74d44880533b25423e8a768703cb9c\\classes.dex
-base.1=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c0be1d8b1c74d44880533b25423e8a768703cb9c
-file.0=C\:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_f3950ba3428f913d7fe97b5fd781aa6f6ddf2fb6\\classes.dex
+#Sat Oct 21 23:14:06 EET 2017
+base.0=/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

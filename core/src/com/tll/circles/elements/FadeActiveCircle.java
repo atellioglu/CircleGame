@@ -11,7 +11,7 @@ import com.tll.circles.Size;
  */
 
 public class FadeActiveCircle extends ActiveCircle {
-    private float fadeTime,waitTime;
+    private float fadeTime,visibleTime,invisibleTime;
     private float alpha = 1;
     private float waitDelta = 0.0f;
     private FadeStates state;
@@ -20,13 +20,13 @@ public class FadeActiveCircle extends ActiveCircle {
     public FadeActiveCircle(Texture texture, Size size, Vector3 position) {
         super(texture, size, position);
         state = FadeStates.VISIBLE;
-        remainingUntilInvisible = waitTime + fadeTime;
+        remainingUntilInvisible = visibleTime + fadeTime;
     }
 
     public FadeActiveCircle(Size size, Vector3 position) {
         super(size, position);
         state = FadeStates.VISIBLE;
-        remainingUntilInvisible = waitTime + fadeTime;
+        remainingUntilInvisible = visibleTime + fadeTime;
     }
     public FadeStates getState(){
         return state;
@@ -39,12 +39,48 @@ public class FadeActiveCircle extends ActiveCircle {
         this.fadeTime = fadeTime;
     }
 
-    public float getWaitTime() {
-        return waitTime;
+    public float getVisibleTime() {
+        return visibleTime;
     }
 
-    public void setWaitTime(float waitTime) {
-        this.waitTime = waitTime;
+    public void setVisibleTime(float visibleTime) {
+        this.visibleTime = visibleTime;
+    }
+
+    public float getInvisibleTime() {
+        return invisibleTime;
+    }
+
+    public void setInvisibleTime(float invisibleTime) {
+        this.invisibleTime = invisibleTime;
+    }
+
+    public float getAlpha() {
+        return alpha;
+    }
+
+    public void setAlpha(float alpha) {
+        this.alpha = alpha;
+    }
+
+    public float getWaitDelta() {
+        return waitDelta;
+    }
+
+    public void setWaitDelta(float waitDelta) {
+        this.waitDelta = waitDelta;
+    }
+
+    public void setState(FadeStates state) {
+        this.state = state;
+    }
+
+    public float getRemainingUntilInvisible() {
+        return remainingUntilInvisible;
+    }
+
+    public void setRemainingUntilInvisible(float remainingUntilInvisible) {
+        this.remainingUntilInvisible = remainingUntilInvisible;
     }
 
     @Override
@@ -57,11 +93,10 @@ public class FadeActiveCircle extends ActiveCircle {
         if(attachedArrow!=null) {
             mSprite.rotate(-getRotationAngleSpeed());
         }
-        Gdx.app.log("FADEActiveCircle",state.name()+" WaitTime : "+waitTime +", WaitDelta :"+waitDelta +", Alpha :"+alpha);
         if(state == FadeStates.VISIBLE){
             waitDelta +=dt;
             interaction = true;
-            if(waitDelta >= waitTime){
+            if(waitDelta >= visibleTime){
                 waitDelta = 0;
                 state = FadeStates.FADING_OUT;
             }
@@ -73,10 +108,10 @@ public class FadeActiveCircle extends ActiveCircle {
             }
             waitDelta +=dt;
             interaction = false;
-            if(waitDelta >= waitTime){
+            if(waitDelta >= invisibleTime){
                 waitDelta = 0;
                 state = FadeStates.FADING_IN;
-                remainingUntilInvisible = waitTime + fadeTime+ fadeTime;// tam gorunur olcak bekliycek gorunmez olcak
+                remainingUntilInvisible = visibleTime + fadeTime+ fadeTime;// tam gorunur olcak bekliycek gorunmez olcak
             }
         }else if(state == FadeStates.FADING_OUT){
             alpha -= dt/fadeTime;
