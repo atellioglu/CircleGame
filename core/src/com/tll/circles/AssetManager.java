@@ -22,6 +22,7 @@ public class AssetManager {
             new Texture(Gdx.files.internal("circles/circle_type_2.png"),true),
             new Texture(Gdx.files.internal("circles/circle_type_3.png"),true)
     };
+    public static final Texture overlay = new Texture("overlay.png");
     public static class WhiteTheme{
         public static final Texture shield = new Texture("shield_not_active_white_theme.png");
         public static final Texture shieldActive = new Texture("shield_active_white_theme.png");

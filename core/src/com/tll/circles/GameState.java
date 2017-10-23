@@ -21,6 +21,9 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.tll.circles.dialog.Dialog;
+import com.tll.circles.dialog.EndGameDialog;
+import com.tll.circles.dialog.PauseDialog;
 import com.tll.circles.elements.ActiveCircle;
 import com.tll.circles.elements.Arrow;
 import com.tll.circles.elements.Barrier;
@@ -33,6 +36,7 @@ import com.tll.circles.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by abdullahtellioglu on 09/07/17.
@@ -49,7 +53,6 @@ public class GameState extends InputAdapter implements Screen {
     private Viewport viewport;
     private int collectedStars = 0;
     private TmxMapLoader loader;
-
     private TiledMap tiledMap;
     //test icin
     private ShapeRenderer shapeRenderer;
@@ -59,6 +62,8 @@ public class GameState extends InputAdapter implements Screen {
     private MyGdxGame game;
     private boolean showFailDialog = false,showSuccessDialog = false;
     private Theme theme;
+    private State state;
+    private Dialog dialog;
     public GameState(MyGdxGame game,int levelIndex){
         this.game = game;
         theme = ThemeFactory.getInstance().getTheme();
@@ -66,32 +71,20 @@ public class GameState extends InputAdapter implements Screen {
         camera = new OrthographicCamera();
         viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
         loader = new TmxMapLoader();
-        tiledMap = loader.load(String.format("levels/level%d.tmx",levelIndex));
+        tiledMap = loader.load(String.format(Locale.ENGLISH,"levels/level%d.tmx",levelIndex));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
-        elements = new ArrayList<Element>();
+        elements = new ArrayList<>();
         barriers = new Barrier();
         loadMap();
         shapeRenderer = new ShapeRenderer();
         userArrow.setShapeRenderer(shapeRenderer);
-        userArrow.setAnimationListener(new Arrow.AnimationListener() {
-            @Override
-            public void onAnimationStart(boolean success) {
-
-            }
-
-            @Override
-            public void onAnimationFinish(boolean success) {
-                if(success){
-                    showSuccessDialog = true;
-                }else{
-                    showFailDialog = true;
-                }
-            }
-        });
         Gdx.input.setInputProcessor(this);
         createHud();
         PreferenceHandler.saveCurrentLevel(levelIndex);
+        state = State.RUNNING;
     }
+
+
     @Override
     public void render(float delta) {
         update(delta);
@@ -100,8 +93,8 @@ public class GameState extends InputAdapter implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         Gdx.gl.glClearColor(bg.r, bg.g, bg.b, bg.a);
         //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT| GL20.GL_DEPTH_BUFFER_BIT |(Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
-
         sb.setProjectionMatrix(camera.combined);
+
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
         Color line = ThemeFactory.getInstance().getTheme().lineColor;
         shapeRenderer.setColor(line.r,line.g,line.b,line.a);
@@ -123,7 +116,13 @@ public class GameState extends InputAdapter implements Screen {
         userArrow.render(sb);
         sb.end();
         barriers.render(sb);
+
+        if(userArrow.getState() == Arrow.State.DEAD){
+            dialog = new EndGameDialog();
+            dialog.render(sb);
+        }
         renderHud();
+
     }
 
 
@@ -146,14 +145,14 @@ public class GameState extends InputAdapter implements Screen {
     public void update(float dt) {
         if(dt==0)
             return;
-        if(userArrow.isDead()){
+        if(state == State.PAUSED){
+            //pause oldugunda oyunu durdur.
             return;
         }
         tiledMapRenderer.setView(camera);
         if(barriers.checkCollision(userArrow.getSprite())){
             userArrow.die();
             userArrow.update(dt);
-            return;
         }
 
         for(int i =0;i<elements.size();i++){
@@ -170,12 +169,19 @@ public class GameState extends InputAdapter implements Screen {
             userArrow.attach(activeCircle);
             activeCircle.attach(userArrow);
         }
+        if(userArrow.getState() == Arrow.State.DEAD){
+            //dialog cikart.
+
+        }
     }
 
     Vector3 touchPoint = new Vector3();
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         camera.unproject(touchPoint.set(screenX,screenY,0));
+        if(dialog!=null){
+            dialog.touchUp(touchPoint.x,touchPoint.y);
+        }
         if(!paused){
             if(lastTouchedDownSprite == retrySprite){
                 if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
@@ -196,21 +202,24 @@ public class GameState extends InputAdapter implements Screen {
     }
     private Sprite lastTouchedDownSprite = null;
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        camera.unproject(touchPoint.set(screenX,screenY,0));
+        if(dialog!=null){
+            dialog.touchDown(touchPoint.x,touchPoint.y);
+
+        }
         if(!paused){
-            camera.unproject(touchPoint.set(screenX,screenY,0));
+
             if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
                 lastTouchedDownSprite = retrySprite;
                 return false;
             }
-            if(menuSprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
-                lastTouchedDownSprite = menuSprite;
-                return false;
+            if(userArrow.getState() != Arrow.State.DYING || userArrow.getState() != Arrow.State.DEAD){
+                ActiveCircle activeCircle = userArrow.getAttached();
+                if(activeCircle!=null){
+                    activeCircle.detach();
+                }
+                userArrow.detach();
             }
-            ActiveCircle activeCircle = userArrow.getAttached();
-            if(activeCircle!=null){
-                activeCircle.detach();
-            }
-            userArrow.detach();
         }
         return false;
     }
@@ -247,6 +256,7 @@ public class GameState extends InputAdapter implements Screen {
                             @Override
                             public void onTimeout() {
                                 userArrow.die();
+                                Gdx.app.log(GameState.class.getSimpleName(),"Arrow timeout");
                                 //game.setScreen(new GameState(game,GameState.this.levelIndex));
                             }
                         });
@@ -266,6 +276,7 @@ public class GameState extends InputAdapter implements Screen {
                             @Override
                             public void onTimeout() {
                                 userArrow.die();
+                                Gdx.app.log(GameState.class.getSimpleName(),"Arrow timeout");
                             }
                         });
                         break;
@@ -368,13 +379,20 @@ public class GameState extends InputAdapter implements Screen {
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height, true);
+
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         barriers.getRenderer().setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
+
     }
 
     @Override
     public void show() {
 
+    }
+
+    public enum State{
+        RUNNING,
+        PAUSED
     }
 }

@@ -28,10 +28,9 @@ public class Arrow extends Element{
     public Vector3 velocity;
     private ActiveCircle mLastAttachedCircle;
     private ShapeRenderer shapeRenderer;
-    private boolean dead = false;
-    private boolean visibility = true;
     private float alpha = 1;
     private List<ArrowShadow> shadowAnimation;
+    private State state;
     public Sprite getSprite(){
         return mSprite;
     }
@@ -44,7 +43,8 @@ public class Arrow extends Element{
         mActiveCircle = activeCircle;
         velocity = new Vector3(VELOCITYX,VELOCITYY,0);
         mSprite.setOriginCenter();
-        shadowAnimation = new ArrayList<ArrowShadow>(10);
+        shadowAnimation = new ArrayList<>(10);
+        state = State.ON_CIRCLE;
     }
     public ActiveCircle getAttached(){
         return mActiveCircle;
@@ -74,15 +74,8 @@ public class Arrow extends Element{
     public void setFinished(EndCircle endCircle){
 
     }
-    private AnimationListener animationListener;
-    public void setAnimationListener(AnimationListener listener){
-        this.animationListener = listener;
-    }
     public void die(){
-        visibility = false;
-    }
-    public boolean isDead(){
-        return dead;
+        state = State.DYING;
     }
     private float lastAnimationUpdateDelta = 0.0f;
     @Override
@@ -98,39 +91,26 @@ public class Arrow extends Element{
 
     @Override
     public void update(float dt) {
-        if(dead){
-            shadowAnimation.clear();
-            return;
+        //arkasindaki animasyonlar her kosulda devam etmeli.
+        updateArrowShadowAnimation(dt);
+        if(state == State.DYING){
+            updateDyingAnimation(dt);
         }
-
-        if(!visibility){
-            alpha -= dt/ 0.50f;
-            if(alpha <= 0){
-                dead = true;
-            }else{
-                mSprite.setAlpha(alpha);
-            }
+        if(state == State.DEAD || state == State.DYING){
+            //Eger olduyse devamini yapma!
             return;
-        }
-        int i =0;
-        while(i < shadowAnimation.size()){
-            ArrowShadow arrowShadow = shadowAnimation.get(i);
-            if(arrowShadow.alpha <= 0){
-                shadowAnimation.remove(arrowShadow);
-                Gdx.app.log(Arrow.class.getSimpleName(),"Removed Animation");
-            }else{
-                arrowShadow.update(dt);
-            }
-            i++;
         }
 
         float xx,yy;
         if(mActiveCircle == null){
+            state = State.STRAIGHT;
             Vector2 current = new Vector2(mSprite.getX(),mSprite.getY());
             float rotationAngle = (mSprite.getRotation()%360)+360+270;
             xx =  current.x + (float)Math.cos(Math.toRadians(rotationAngle)) *velocity.x * dt;
             yy =  current.y + (float)Math.sin(Math.toRadians(rotationAngle)) *velocity.y * dt;
             mSprite.setPosition(xx,yy);
+
+            //Duz ilerlerken arkasinda cikan oklari olusturma
             lastAnimationUpdateDelta += dt;
             if(lastAnimationUpdateDelta >= SHADOW_ANIMATION_DELTA){
                 //yeni bir tane cizilecek!
@@ -140,6 +120,7 @@ public class Arrow extends Element{
             }
             //duz ilerleme!
         }else{
+            state = State.ON_CIRCLE;
             shadowAnimation.clear();
             lastAnimationUpdateDelta = 0;
             mSprite.rotate(-mActiveCircle.getRotationAngleSpeed());
@@ -152,9 +133,18 @@ public class Arrow extends Element{
                     mActiveCircle.getY() + mActiveCircle.getHeight() / 2));
 
             mSprite.setPosition(vec2.x-mSprite.getWidth()/2,vec2.y-mSprite.getHeight()/2);
+
         }
     }
-
+    private void updateDyingAnimation(float dt){
+        alpha -= dt/ 0.50f;
+        if(alpha <= 0){
+            state = State.DEAD;
+            mSprite.setAlpha(0);
+        }else{
+            mSprite.setAlpha(alpha);
+        }
+    }
     public Vector2 calculateOrbit(float currentOrbitDegrees, float distanceFromCenterPoint, Vector2 centerPoint) {
         float radians = (float)Math.toRadians(currentOrbitDegrees);
         float x = (float)(Math.cos(radians) * distanceFromCenterPoint) + centerPoint.x;
@@ -166,18 +156,28 @@ public class Arrow extends Element{
         void onAnimationStart(boolean success);
         void onAnimationFinish(boolean success);
     }
-    private class FinishAnimation{
-        private float x,y;
-        public FinishAnimation(float x,float y){
-            this.x = x;
-            this.y = y;
+    public State getState(){
+        return state;
+    }
+    private void updateArrowShadowAnimation(float dt){
+        int i =0;
+        while(i < shadowAnimation.size()){
+            ArrowShadow arrowShadow = shadowAnimation.get(i);
+            if(arrowShadow.alpha <= 0){
+                shadowAnimation.remove(arrowShadow);
+            }else{
+                arrowShadow.update(dt);
+            }
+            i++;
         }
-        public void update(float dt){
-
-        }
-        public void render(SpriteBatch sb){
-
-        }
+    }
+    public enum State{
+        ON_CIRCLE,
+        STRAIGHT,
+        DYING,
+        DEAD,
+        FINISHING,
+        FINISHED
     }
     private class ArrowShadow extends Element{
         private float alpha = 0.8f;

@@ -78,8 +78,12 @@ public class ActiveCircle extends Element {
             mSprite.rotate(-getRotationAngleSpeed());
             alpha -= dt/mTimeout;
             if(alpha <= 0){
-                Gdx.app.log("TEST","YANDI");
-                listener.onTimeout();
+                if(listener!=null){
+                    listener.onTimeout();
+                    listener = null;
+                }
+
+
                 return;
             }else{
                 mSprite.setAlpha(alpha);

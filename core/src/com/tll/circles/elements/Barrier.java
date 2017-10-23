@@ -21,7 +21,7 @@ public class Barrier extends Element {
     public Barrier(){
         renderer = new ShapeRenderer();
         renderer.setAutoShapeType(true);
-        rectangles = new ArrayList<Rectangle>();
+        rectangles = new ArrayList<>();
     }
 
     public void addRectangle(Rectangle rectangle){
@@ -56,8 +56,10 @@ public class Barrier extends Element {
     public boolean checkCollision(Sprite arrow){
         for(int i =0;i<rectangles.size();i++){
             Rectangle rectangle = arrow.getBoundingRectangle();
-            rectangle.setWidth(rectangle.getWidth()-5);
-            rectangle.setHeight(rectangle.getHeight()-5);
+            rectangle.setX(rectangle.getX()+5);
+            rectangle.setY(rectangle.getY()+5);
+            rectangle.setWidth(rectangle.getWidth()-10);
+            rectangle.setHeight(rectangle.getHeight()-10);
             boolean overLaps = rectangles.get(i).overlaps(rectangle);
             if(overLaps)
                 return true;

@@ -1,4 +1,4 @@
-#Sat Oct 21 23:14:06 EET 2017
+#Mon Oct 23 22:10:08 EET 2017
 base.0=/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main
 renamed.0=classes.dex
 file.0=/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex

@@ -1,4 +1,4 @@
-package com.mydx.game;
+package com.mygdx.game;
 
 import com.badlogic.gdx.backends.iosmoe.IOSApplication;
 import com.badlogic.gdx.backends.iosmoe.IOSApplicationConfiguration;

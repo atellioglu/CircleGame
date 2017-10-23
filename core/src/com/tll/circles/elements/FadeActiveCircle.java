@@ -102,8 +102,10 @@ public class FadeActiveCircle extends ActiveCircle {
             }
         }else if (state == FadeStates.INVISIBLE){
             if(attachedArrow!=null){
-                Gdx.app.log("TEST","YANDI");
-                listener.onTimeout();
+                if(listener!=null){
+                    listener.onTimeout();
+                    listener = null;
+                }
                 return;
             }
             waitDelta +=dt;

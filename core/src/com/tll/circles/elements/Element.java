@@ -16,4 +16,5 @@ public abstract class Element {
     protected Sprite mSprite;
     public abstract void render(SpriteBatch sb);
     public abstract void update(float dt);
+
 }

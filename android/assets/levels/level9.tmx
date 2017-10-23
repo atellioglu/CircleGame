@@ -12,7 +12,7 @@
    </properties>
   </object>
   <object id="4" name="end" x="40" y="28.3333" width="80" height="80"/>
-  <object id="23" x="29" y="308" width="128" height="128">
+  <object id="23" x="29" y="289" width="128" height="128">
    <properties>
     <property name="angle" type="float" value="6"/>
     <property name="timeout" type="float" value="5"/>
@@ -45,12 +45,12 @@
   </object>
  </objectgroup>
  <objectgroup name="stars">
-  <object id="27" x="81" y="300" width="25" height="25">
+  <object id="27" x="81" y="281" width="25" height="25">
    <properties>
     <property name="value" type="int" value="1"/>
    </properties>
   </object>
-  <object id="31" x="81" y="417.333" width="25" height="25">
+  <object id="31" x="81" y="398.333" width="25" height="25">
    <properties>
     <property name="value" type="int" value="1"/>
    </properties>
@@ -113,7 +113,7 @@
  </objectgroup>
  <objectgroup name="barriers">
   <object id="45" x="239" y="29.6667" width="2" height="80"/>
-  <object id="46" x="327.333" y="225.667" width="136" height="2"/>
+  <object id="46" x="355.333" y="246.667" width="89" height="2"/>
   <object id="50" x="43.6667" y="504.667" width="236" height="2"/>
  </objectgroup>
 </map>

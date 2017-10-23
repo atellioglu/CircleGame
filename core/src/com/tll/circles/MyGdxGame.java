@@ -27,7 +27,7 @@ public class MyGdxGame extends Game {
 			AssetManager.circles[i].setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
 		}
 		AssetManager.star.setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
-		setScreen(new GameState(this,1));
+		setScreen(new GameState(this,25));
 
 		//setScreen(new GameState(this,PreferenceHandler.getCurrentLevel()));
 	}
