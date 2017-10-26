@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'io.fabric.tools:gradle:1.+'         // <- 2nd
+        classpath 'org.multi-os-engine:moe-gradle:1.4.0'
     }
 }
 
@@ -84,6 +85,19 @@ project(":android") {
         compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {  //<--5th
             transitive = true;
         }
+    }
+}
+
+project(":ios-moe") {
+    apply plugin: "moe"
+
+    configurations { natives }
+
+    dependencies {
+        compile project(":core")
+        compile "com.badlogicgames.gdx:gdx-backend-moe:$gdxVersion"
+        natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
+
     }
 }
 

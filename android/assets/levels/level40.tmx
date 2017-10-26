@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="left-down" width="1" height="1" tilewidth="480" tileheight="800" nextobjectid="217">
+ <layer name="background" width="1" height="1" offsetx="-1" offsety="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgAAAABAAB
+  </data>
+ </layer>
+ <objectgroup name="circles">
+  <object id="1" name="start" x="370.278" y="700" width="50" height="50">
+   <properties>
+    <property name="angle" type="float" value="6"/>
+   </properties>
+  </object>
+  <object id="4" name="end" x="392.609" y="91.8086" width="50" height="50"/>
+  <object id="169" x="35" y="700" width="50" height="50">
+   <properties>
+    <property name="angle" type="float" value="7"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="171" x="391.108" y="273.173" width="50" height="50">
+   <properties>
+    <property name="angle" type="float" value="7"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="183" x="64.3213" y="174.812" width="50" height="50">
+   <properties>
+    <property name="angle" type="float" value="7"/>
+    <property name="timeOut" type="float" value="3"/>
+    <property name="type" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="198" x="35" y="460.749" width="50" height="50">
+   <properties>
+    <property name="angle" type="float" value="7"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="200" x="178.776" y="551.433" width="50" height="50">
+   <properties>
+    <property name="angle" type="float" value="7"/>
+    <property name="type" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="202" x="389.313" y="460.916" width="50" height="50">
+   <properties>
+    <property name="angle" type="float" value="7"/>
+    <property name="fadeTime" type="float" value="0.5"/>
+    <property name="invisibleTime" type="float" value="2"/>
+    <property name="type" type="int" value="2"/>
+    <property name="visibleTime" type="float" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="stars">
+  <object id="203" x="190" y="153.517" width="30" height="30">
+   <properties>
+    <property name="value" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="208" x="81.233" y="216.369" width="20" height="20">
+   <properties>
+    <property name="value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="209" x="54.5682" y="189.085" width="20" height="20">
+   <properties>
+    <property name="value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="210" x="104.34" y="187.74" width="20" height="20">
+   <properties>
+    <property name="value" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="211" x="190" y="261.725" width="30" height="30">
+   <properties>
+    <property name="value" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="214" x="409.658" y="454.358" width="10" height="10">
+   <properties>
+    <property name="value" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="215" x="423.216" y="494.891" width="10" height="10">
+   <properties>
+    <property name="value" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="216" x="390.374" y="494.891" width="10" height="10">
+   <properties>
+    <property name="value" type="int" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="barriers">
+  <object id="172" x="120.655" y="572" width="1" height="75"/>
+  <object id="175" x="120.438" y="649" width="300" height="1"/>
+  <object id="201" x="6.60371" y="376.148" width="250" height="1"/>
+ </objectgroup>
+</map>

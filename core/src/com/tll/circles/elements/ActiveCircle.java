@@ -1,12 +1,11 @@
 package com.tll.circles.elements;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.tll.circles.AssetManager;
 import com.tll.circles.Size;
-import com.tll.circles.ThemeFactory;
 
 /**
  * Created by abdullahtellioglu on 09/07/17.
@@ -27,7 +26,7 @@ public class ActiveCircle extends Element {
         mSprite.setOriginCenter();
     }
     public ActiveCircle (Size size,Vector3 position){
-        this(ThemeFactory.getInstance().getTheme().circle,size,position);
+        this(AssetManager.circles[0],size,position);
     }
     public void setRotationAngleSpeed(float rotationAngleSpeed){
         mRotationAngleSpeed  = rotationAngleSpeed;
@@ -78,8 +77,12 @@ public class ActiveCircle extends Element {
             mSprite.rotate(-getRotationAngleSpeed());
             alpha -= dt/mTimeout;
             if(alpha <= 0){
-                Gdx.app.log("TEST","YANDI");
-                listener.onTimeout();
+                if(listener!=null){
+                    listener.onTimeout();
+                    listener = null;
+                }
+
+
                 return;
             }else{
                 mSprite.setAlpha(alpha);

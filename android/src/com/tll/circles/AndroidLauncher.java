@@ -16,6 +16,7 @@ public class AndroidLauncher extends AndroidApplication implements AdListener{
 		super.onCreate(savedInstanceState);
 		Fabric.with(this, new Crashlytics());
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+		config.numSamples = 2;
 		initialize(new MyGdxGame(),config);
 
 	}
