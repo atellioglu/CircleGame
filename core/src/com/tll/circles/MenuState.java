@@ -53,13 +53,12 @@ public class MenuState extends InputAdapter implements Screen {
     @Override
     public void render(float delta) {
         update(delta);
-        Theme theme = ThemeFactory.getInstance().getTheme();
         SpriteBatch sb = game.batch;
-        Color bg = theme.menuBackgroundColor;
-        Gdx.gl.glClearColor(bg.r, bg.g, bg.b, bg.a);
+        Gdx.gl.glClearColor(46f/255,46f/255,46f/255,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
         sb.begin();
+        /*
         sb.draw(theme.menuIcon,92,634,289,111);
         sb.draw(theme.menuCircle,0,123,480,480);
 
@@ -74,7 +73,7 @@ public class MenuState extends InputAdapter implements Screen {
 
         sb.draw(theme.menuThemeText,themeRect.x,themeRect.y,TEXT_WIDTH,themeRect.height);
         sb.draw(theme.menuThemeSwitch,themeRect.x + TEXT_WIDTH + ICON_MARGIN_LEFT ,themeRect.y+themeRect.height/4,themeRect.height,themeRect.height/2);
-
+*/
 
 
         sb.end();

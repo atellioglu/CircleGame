@@ -1,0 +1,146 @@
+total 56
+drwxr-xr-x   9 abdullahtellioglu  staff    288 Oct 24 01:17 .
+drwxr-xr-x  10 abdullahtellioglu  staff    320 Oct 22 03:41 ..
+-rw-r--r--   1 abdullahtellioglu  staff   6148 Oct 23 23:18 .DS_Store
+-rw-r--r--@  1 abdullahtellioglu  staff  18594 Oct  9 23:51 Default-568h@2x.png
+	com.apple.lastuseddate#PS	   16 
+drwxr-xr-x  14 abdullahtellioglu  staff    448 Oct 22 02:25 ios-moe
+drwxr-xr-x   4 abdullahtellioglu  staff    128 Oct 22 02:25 ios-moe-Test
+drwxr-xr-x@  6 abdullahtellioglu  staff    192 Oct 24 01:15 ios-moe.xcodeproj
+	com.apple.lastuseddate#PS	   16 
+-rw-r--r--   1 abdullahtellioglu  staff      0 Oct 24 01:17 kundapura.txt
+drwxr-xr-x   3 abdullahtellioglu  staff     96 Oct 22 02:39 native
+
+./ios-moe:
+total 1328
+drwxr-xr-x  14 abdullahtellioglu  staff     448 Oct 22 02:25 .
+drwxr-xr-x   9 abdullahtellioglu  staff     288 Oct 24 01:17 ..
+-rw-r--r--   1 abdullahtellioglu  staff  106582 Oct 22 02:25 Default-1024w-1366h@2x~ipad.png
+-rw-r--r--   1 abdullahtellioglu  staff   98595 Oct 22 02:25 Default-375w-667h@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff  110696 Oct 22 02:25 Default-414w-736h@3x.png
+-rw-r--r--   1 abdullahtellioglu  staff   84382 Oct 22 02:25 Default-568h@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   29751 Oct 22 02:25 Default.png
+-rw-r--r--   1 abdullahtellioglu  staff   85109 Oct 22 02:25 Default@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   97633 Oct 22 02:25 Default@2x~ipad.png
+-rw-r--r--   1 abdullahtellioglu  staff   34134 Oct 22 02:25 Default~ipad.png
+-rw-r--r--   1 abdullahtellioglu  staff    1586 Oct 23 19:39 Info.plist
+drwxr-xr-x   4 abdullahtellioglu  staff     128 Oct 22 02:25 Media.xcassets
+-rw-r--r--   1 abdullahtellioglu  staff     108 Oct 23 19:23 custom.xcconfig
+-rw-r--r--   1 abdullahtellioglu  staff      89 Oct 22 02:25 main.cpp
+
+./ios-moe/Media.xcassets:
+total 8
+drwxr-xr-x   4 abdullahtellioglu  staff  128 Oct 22 02:25 .
+drwxr-xr-x  14 abdullahtellioglu  staff  448 Oct 22 02:25 ..
+drwxr-xr-x  21 abdullahtellioglu  staff  672 Oct 22 02:25 AppIcon.appiconset
+-rw-r--r--   1 abdullahtellioglu  staff   62 Oct 22 02:25 Contents.json
+
+./ios-moe/Media.xcassets/AppIcon.appiconset:
+total 176
+drwxr-xr-x  21 abdullahtellioglu  staff    672 Oct 22 02:25 .
+drwxr-xr-x   4 abdullahtellioglu  staff    128 Oct 22 02:25 ..
+-rw-r--r--   1 abdullahtellioglu  staff   2545 Oct 22 02:25 Contents.json
+-rw-r--r--   1 abdullahtellioglu  staff  14555 Oct 22 02:25 app-store-icon-1024@1x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1385 Oct 22 02:25 ipad-app-icon-76@1x.png
+-rw-r--r--   1 abdullahtellioglu  staff   2318 Oct 22 02:25 ipad-app-icon-76@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff    379 Oct 22 02:25 ipad-notifications-icon-20@1x.png
+-rw-r--r--   1 abdullahtellioglu  staff    793 Oct 22 02:25 ipad-notifications-icon-20@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   2444 Oct 22 02:25 ipad-pro-app-icon-83.5@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff    623 Oct 22 02:25 ipad-settings-icon-29@1x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1102 Oct 22 02:25 ipad-settings-icon-29@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff    793 Oct 22 02:25 ipad-spotlight-icon-40@1x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1462 Oct 22 02:25 ipad-spotlight-icon-40@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1952 Oct 22 02:25 iphone-app-icon-60@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   2564 Oct 22 02:25 iphone-app-icon-60@3x.png
+-rw-r--r--   1 abdullahtellioglu  staff    793 Oct 22 02:25 iphone-notification-icon-20@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1119 Oct 22 02:25 iphone-notification-icon-20@3x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1462 Oct 22 02:25 iphone-spotlight-icon-40@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1952 Oct 22 02:25 iphone-spotlight-icon-40@3x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1102 Oct 22 02:25 iphone-spotlight-settings-icon-29@2x.png
+-rw-r--r--   1 abdullahtellioglu  staff   1530 Oct 22 02:25 iphone-spotlight-settings-icon-29@3x.png
+
+./ios-moe-Test:
+total 16
+drwxr-xr-x  4 abdullahtellioglu  staff   128 Oct 22 02:25 .
+drwxr-xr-x  9 abdullahtellioglu  staff   288 Oct 24 01:17 ..
+-rw-r--r--  1 abdullahtellioglu  staff  1403 Oct 22 02:25 Info.plist
+-rw-r--r--  1 abdullahtellioglu  staff    89 Oct 22 02:25 main.cpp
+
+./ios-moe.xcodeproj:
+total 72
+drwxr-xr-x@ 6 abdullahtellioglu  staff    192 Oct 24 01:15 .
+	com.apple.lastuseddate#PS	   16 
+drwxr-xr-x  9 abdullahtellioglu  staff    288 Oct 24 01:17 ..
+-rw-r--r--  1 abdullahtellioglu  staff  36010 Oct 24 01:15 project.pbxproj
+drwxr-xr-x@ 4 abdullahtellioglu  staff    128 Oct 22 02:47 project.xcworkspace
+	com.apple.lastuseddate#PS	   16 
+drwxr-xr-x  3 abdullahtellioglu  staff     96 Oct 23 19:45 xcshareddata
+drwxr-xr-x  3 abdullahtellioglu  staff     96 Oct 22 02:47 xcuserdata
+
+./ios-moe.xcodeproj/project.xcworkspace:
+total 8
+drwxr-xr-x@ 4 abdullahtellioglu  staff  128 Oct 22 02:47 .
+	com.apple.lastuseddate#PS	 16 
+drwxr-xr-x@ 6 abdullahtellioglu  staff  192 Oct 24 01:15 ..
+	com.apple.lastuseddate#PS	 16 
+-rw-r--r--  1 abdullahtellioglu  staff  135 Oct 22 02:47 contents.xcworkspacedata
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 22 02:47 xcuserdata
+
+./ios-moe.xcodeproj/project.xcworkspace/xcuserdata:
+total 0
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 22 02:47 .
+drwxr-xr-x@ 4 abdullahtellioglu  staff  128 Oct 22 02:47 ..
+	com.apple.lastuseddate#PS	 16 
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 24 01:15 abdullahtellioglu.xcuserdatad
+
+./ios-moe.xcodeproj/project.xcworkspace/xcuserdata/abdullahtellioglu.xcuserdatad:
+total 120
+drwxr-xr-x  3 abdullahtellioglu  staff     96 Oct 24 01:15 .
+drwxr-xr-x  3 abdullahtellioglu  staff     96 Oct 22 02:47 ..
+-rw-r--r--  1 abdullahtellioglu  staff  61308 Oct 24 01:15 UserInterfaceState.xcuserstate
+
+./ios-moe.xcodeproj/xcshareddata:
+total 0
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 23 19:45 .
+drwxr-xr-x@ 6 abdullahtellioglu  staff  192 Oct 24 01:15 ..
+	com.apple.lastuseddate#PS	 16 
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 23 19:53 xcschemes
+
+./ios-moe.xcodeproj/xcshareddata/xcschemes:
+total 8
+drwxr-xr-x  3 abdullahtellioglu  staff    96 Oct 23 19:53 .
+drwxr-xr-x  3 abdullahtellioglu  staff    96 Oct 23 19:45 ..
+-rw-r--r--  1 abdullahtellioglu  staff  3534 Oct 23 19:53 ios-moe.xcscheme
+
+./ios-moe.xcodeproj/xcuserdata:
+total 0
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 22 02:47 .
+drwxr-xr-x@ 6 abdullahtellioglu  staff  192 Oct 24 01:15 ..
+	com.apple.lastuseddate#PS	 16 
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 22 02:47 abdullahtellioglu.xcuserdatad
+
+./ios-moe.xcodeproj/xcuserdata/abdullahtellioglu.xcuserdatad:
+total 0
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 22 02:47 .
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 22 02:47 ..
+drwxr-xr-x  4 abdullahtellioglu  staff  128 Oct 23 19:45 xcschemes
+
+./ios-moe.xcodeproj/xcuserdata/abdullahtellioglu.xcuserdatad/xcschemes:
+total 16
+drwxr-xr-x  4 abdullahtellioglu  staff   128 Oct 23 19:45 .
+drwxr-xr-x  3 abdullahtellioglu  staff    96 Oct 22 02:47 ..
+-rw-r--r--  1 abdullahtellioglu  staff  3367 Oct 23 19:32 ios-moe-Test.xcscheme
+-rw-r--r--  1 abdullahtellioglu  staff   683 Oct 23 19:45 xcschememanagement.plist
+
+./native:
+total 0
+drwxr-xr-x  3 abdullahtellioglu  staff   96 Oct 22 02:39 .
+drwxr-xr-x  9 abdullahtellioglu  staff  288 Oct 24 01:17 ..
+drwxr-xr-x  4 abdullahtellioglu  staff  128 Oct 22 02:40 ios
+
+./native/ios:
+total 19360
+drwxr-xr-x  4 abdullahtellioglu  staff      128 Oct 22 02:40 .
+drwxr-xr-x  3 abdullahtellioglu  staff       96 Oct 22 02:39 ..
+-rw-r--r--  1 abdullahtellioglu  staff  7238088 Oct 23 19:23 libObjectAL.a
+-rw-r--r--  1 abdullahtellioglu  staff  2669864 Oct 23 19:23 libgdx.a

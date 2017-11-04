@@ -1,19 +1,16 @@
 package com.tll.circles.elements;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.tll.circles.ThemeFactory;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 
 /**
@@ -21,7 +18,7 @@ import java.util.Queue;
  */
 public class Arrow extends Element{
     private static final float SHADOW_ANIMATION_DELTA = 0.20f;
-    private static final int VELOCITYX = 250,VELOCITYY = 250;
+    private static int VELOCITYX = 250,VELOCITYY = 250;
     private static final int WIDTH = 48,HEIGHT = 48;
     //okun uzerinde bulundugu yuvarlak!
     private ActiveCircle mActiveCircle;
@@ -36,7 +33,7 @@ public class Arrow extends Element{
     }
     public Arrow(ActiveCircle activeCircle){
         mActiveCircle = activeCircle;
-        mSprite = new Sprite(ThemeFactory.getInstance().getTheme().arrow);
+        mSprite = new Sprite(com.tll.circles.AssetManager.defaultArrow);
         mSprite.setSize(WIDTH, HEIGHT);
         //mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() / 2 - mSprite.getWidth() / 2, activeCircle.getY() + mSprite.getHeight() / 2);
         mSprite.setPosition(activeCircle.getX() + activeCircle.getWidth() - mSprite.getWidth() / 2, activeCircle.getY() + activeCircle.getHeight()/2 - mSprite.getHeight() / 2);

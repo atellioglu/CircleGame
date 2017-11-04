@@ -47,7 +47,7 @@ public class GameState extends InputAdapter implements Screen {
     private List<Element> elements;
     private Barrier barriers;
     private Arrow userArrow;
-    private boolean paused = false,started=true;
+    private boolean paused = false;
     private int levelIndex;
     private OrthographicCamera camera;
     private Viewport viewport;
@@ -60,13 +60,18 @@ public class GameState extends InputAdapter implements Screen {
     // TODO: 18/09/17 Arka planda hata var tum ekrani kaplamiyor!!
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
-    private boolean showFailDialog = false,showSuccessDialog = false;
-    private Theme theme;
     private State state;
     private Dialog dialog;
+    private static Skill mSkill = Skill.NONE;
+    public static Skill getSkill(){
+        return mSkill;
+    }
     public GameState(MyGdxGame game,int levelIndex){
+        this(game,levelIndex,Skill.NONE);
+    }
+    public GameState(MyGdxGame game,int levelIndex,Skill skill){
+        mSkill = skill;
         this.game = game;
-        theme = ThemeFactory.getInstance().getTheme();
         this.levelIndex = levelIndex;
         camera = new OrthographicCamera();
         viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
@@ -83,21 +88,16 @@ public class GameState extends InputAdapter implements Screen {
         PreferenceHandler.saveCurrentLevel(levelIndex);
         state = State.RUNNING;
     }
-
-
     @Override
     public void render(float delta) {
         update(delta);
         SpriteBatch sb = game.batch;
-        Color bg = ThemeFactory.getInstance().getTheme().backgroundColor;
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.gl.glClearColor(bg.r, bg.g, bg.b, bg.a);
+        Gdx.gl.glClearColor(46f/255,46f/255,46f/255,1f);
         //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT| GL20.GL_DEPTH_BUFFER_BIT |(Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
         sb.setProjectionMatrix(camera.combined);
-
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        Color line = ThemeFactory.getInstance().getTheme().lineColor;
-        shapeRenderer.setColor(line.r,line.g,line.b,line.a);
+        shapeRenderer.setColor(43f/255f,48/255f,49/255f,0.7f);
         for(int i =0;i<MyGdxGame.WIDTH;i+=120){
             shapeRenderer.line(i,0,i,MyGdxGame.HEIGHT);
         }
@@ -106,7 +106,6 @@ public class GameState extends InputAdapter implements Screen {
         }
         shapeRenderer.end();
         tiledMapRenderer.render();
-
         sb.begin();
         for(int i =0;i<elements.size();i++){
             if(!(elements.get(i) instanceof Arrow)){
@@ -146,6 +145,9 @@ public class GameState extends InputAdapter implements Screen {
         if(dt==0)
             return;
         if(state == State.PAUSED){
+            if(dialog !=null){
+                dialog.update(dt);
+            }
             //pause oldugunda oyunu durdur.
             return;
         }
@@ -185,7 +187,7 @@ public class GameState extends InputAdapter implements Screen {
         if(!paused){
             if(lastTouchedDownSprite == retrySprite){
                 if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
-                    game.setScreen(new GameState(game,this.levelIndex));
+                    game.setScreen(new GameState(game,this.levelIndex,mSkill));
                     return false;
                 }else{
                     lastTouchedDownSprite = null;
@@ -205,10 +207,8 @@ public class GameState extends InputAdapter implements Screen {
         camera.unproject(touchPoint.set(screenX,screenY,0));
         if(dialog!=null){
             dialog.touchDown(touchPoint.x,touchPoint.y);
-
         }
         if(!paused){
-
             if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
                 lastTouchedDownSprite = retrySprite;
                 return false;
@@ -261,17 +261,17 @@ public class GameState extends InputAdapter implements Screen {
                             }
                         });
                         try{
-                            activeCircle.setTimeOut(Float.parseFloat(String.valueOf(object.getProperties().get("timeOut"))));
+                            activeCircle.setTimeOut(Float.parseFloat(String.valueOf(object.getProperties().get("timeOut")))/mSkill.getValue());
                         }catch (Exception ex){
-
+                            ex.printStackTrace();
                         }
                         break;
                     case 2:
                         activeCircle = new FadeActiveCircle(selectedTypeTexture,new Size((int)rectangle.getWidth(),(int)rectangle.getHeight()),new Vector3(rectangle.x,rectangle.y,0));
                         FadeActiveCircle fadeActiveCircle = (FadeActiveCircle)activeCircle;
-                        fadeActiveCircle.setFadeTime(Float.parseFloat(String.valueOf(object.getProperties().get("fadeTime"))));
-                        fadeActiveCircle.setVisibleTime(Float.parseFloat(String.valueOf(object.getProperties().get("visibleTime"))));
-                        fadeActiveCircle.setInvisibleTime(Float.parseFloat(String.valueOf(object.getProperties().get("invisibleTime"))));
+                        fadeActiveCircle.setFadeTime(Float.parseFloat(String.valueOf(object.getProperties().get("fadeTime"))) / mSkill.getValue());
+                        fadeActiveCircle.setVisibleTime(Float.parseFloat(String.valueOf(object.getProperties().get("visibleTime")))/ mSkill.getValue());
+                        fadeActiveCircle.setInvisibleTime(Float.parseFloat(String.valueOf(object.getProperties().get("invisibleTime")))/ mSkill.getValue());
                         activeCircle.setTimeOutListener(new ActiveCircle.TimeoutListener() {
                             @Override
                             public void onTimeout() {
@@ -284,7 +284,9 @@ public class GameState extends InputAdapter implements Screen {
             }
             if(object.getProperties().get("angle")!=null){
                 float angle = Float.parseFloat(String.valueOf(object.getProperties().get("angle")));
-                activeCircle.setRotationAngleSpeed(angle);
+                if(mSkill == Skill.SLOW_GAME){
+                    activeCircle.setRotationAngleSpeed(angle * mSkill.getValue());
+                }
             }
             elements.add(activeCircle);
         }
@@ -299,14 +301,13 @@ public class GameState extends InputAdapter implements Screen {
                 }
             });
             elements.add(star);
-            //Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
-            //barriers.addRectangle(rectangle);
         }
         //engelleri olustur
-        for(MapObject object : tiledMap.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
-            barriers.addRectangle(rectangle);
-
+        if(mSkill != Skill.BARRIER_REMOVE){
+            for(MapObject object : tiledMap.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
+                Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+                barriers.addRectangle(rectangle);
+            }
         }
         float barrierThreshold = -15;
         barriers.addRectangle(new Rectangle(barrierThreshold,0,1,MyGdxGame.HEIGHT));
@@ -329,18 +330,19 @@ public class GameState extends InputAdapter implements Screen {
     private Sprite circleSpriteBelowLevelText;
 
     private void createHud(){
-        retrySprite = new Sprite(theme.retry);
+        retrySprite = new Sprite(AssetManager.retryIcon);
         retrySprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
         retrySprite.setPosition(MyGdxGame.WIDTH-MENU_ITEM_SIZE-MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
         retrySprite.setOriginCenter();
-        menuSprite = new Sprite(theme.menu);
+
+        menuSprite = new Sprite(AssetManager.retryIcon);
         menuSprite.setSize(MENU_ITEM_SIZE,MENU_ITEM_SIZE);
         menuSprite.setPosition(MENU_ITEM_SIZE_MARGIN,MENU_ITEM_SIZE_MARGIN);
         menuSprite.setOriginCenter();
-        levelTextSprite = new Sprite(theme.level);
+        levelTextSprite = new Sprite(AssetManager.levelText);
         levelTextSprite.setSize(75,15);
         levelTextSprite.setPosition(MENU_ITEM_SIZE_MARGIN,MyGdxGame.HEIGHT - levelTextSprite.getHeight() - MENU_ITEM_SIZE_MARGIN);
-        circleSpriteBelowLevelText = new Sprite(theme.circle);
+        circleSpriteBelowLevelText = new Sprite(AssetManager.retryIcon);
         circleSpriteBelowLevelText.setSize(75,75);
         circleSpriteBelowLevelText.setPosition(levelTextSprite.getX(),levelTextSprite.getY() - circleSpriteBelowLevelText.getHeight() - MENU_ITEM_SIZE_MARGIN);
     }
@@ -359,11 +361,10 @@ public class GameState extends InputAdapter implements Screen {
 
 
 
-
-
     @Override
     public void pause() {
-
+        state = State.PAUSED;
+        dialog = new PauseDialog();
     }
 
     @Override

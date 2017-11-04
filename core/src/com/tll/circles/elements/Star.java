@@ -6,8 +6,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.tll.circles.AssetManager;
-import com.tll.circles.Theme;
-import com.tll.circles.ThemeFactory;
 
 import java.util.Random;
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="left-down" width="1" height="1" tilewidth="480" tileheight="800" nextobjectid="75">
+ <layer name="background" width="1" height="1" offsetx="-1" offsety="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgAAAABAAB
+  </data>
+ </layer>
+ <objectgroup name="circles">
+  <object id="1" name="start" x="215" y="647.667" width="128" height="128">
+   <properties>
+    <property name="angle" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="4" name="end" x="176" y="35" width="128" height="128"/>
+  <object id="71" x="210" y="222.333" width="60" height="60">
+   <properties>
+    <property name="fadeTime" type="float" value="1"/>
+    <property name="invisibleTime" type="float" value="2"/>
+    <property name="type" type="int" value="2"/>
+    <property name="visibleTime" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="73" x="210" y="370.333" width="60" height="60">
+   <properties>
+    <property name="angle" type="float" value="5.2"/>
+    <property name="timeOut" type="float" value="3.5"/>
+    <property name="type" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="stars"/>
+ <objectgroup name="barriers">
+  <object id="67" x="163" y="174.667" width="2" height="450"/>
+  <object id="70" x="308.333" y="172.333" width="2" height="450"/>
+ </objectgroup>
+</map>

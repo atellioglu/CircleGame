@@ -19,6 +19,7 @@ public class EndGameDialog extends Dialog {
     public void update(float dt) {
 
     }
+
     private Sprite lastTouchedSprite;
     @Override
     public void touchDown(float x, float y) {
@@ -27,13 +28,6 @@ public class EndGameDialog extends Dialog {
 
     @Override
     public void touchUp(float x, float y) {
-         /*if(lastTouchedDownSprite == retrySprite){
-            if(retrySprite.getBoundingRectangle().contains(touchPoint.x,touchPoint.y)){
-                game.setScreen(new GameState(game,this.levelIndex));
-                return false;
-            }else{
-                lastTouchedDownSprite = null;
-            }
-        }*/
+
     }
 }
