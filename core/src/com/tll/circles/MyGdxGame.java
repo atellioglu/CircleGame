@@ -18,7 +18,7 @@ public class MyGdxGame extends Game {
 	public AdListener getAdListener(){
 		return adListener;
 	}
-
+	public static boolean SOUND = true;
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -26,9 +26,12 @@ public class MyGdxGame extends Game {
 		for(int i =0;i<AssetManager.circles.length;i++){
 			AssetManager.circles[i].setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
 		}
+		AssetManager.menuStartButton.setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
 		AssetManager.star.setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
-		setScreen(new GameState(this,29));
+		//setScreen(new GameState(this,29));
+		//setScreen(new LevelPickState(this));
 		//setScreen(new GameState(this,PreferenceHandler.getCurrentLevel()));
+		setScreen(new MenuState(this));
 	}
 
 	@Override
