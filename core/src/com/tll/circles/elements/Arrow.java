@@ -2,6 +2,7 @@ package com.tll.circles.elements;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -10,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -31,6 +33,7 @@ public class Arrow extends Element{
     public Sprite getSprite(){
         return mSprite;
     }
+
     public Arrow(ActiveCircle activeCircle){
         mActiveCircle = activeCircle;
         mSprite = new Sprite(com.tll.circles.AssetManager.defaultArrow);
@@ -42,6 +45,7 @@ public class Arrow extends Element{
         mSprite.setOriginCenter();
         shadowAnimation = new ArrayList<>(10);
         state = State.ON_CIRCLE;
+        shapeRenderer = new ShapeRenderer();
     }
     public ActiveCircle getAttached(){
         return mActiveCircle;
@@ -84,8 +88,18 @@ public class Arrow extends Element{
             arrowShadow.render(sb);
             i++;
         }
+        /*shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.CYAN);
+        float[] vertices = mSprite.getVertices();
+        shapeRenderer.triangle(
+                vertices[SpriteBatch.X2],vertices[SpriteBatch.Y2],
+                vertices[SpriteBatch.X3],vertices[SpriteBatch.Y3],
+                (vertices[SpriteBatch.X1] + vertices[SpriteBatch.X4])/2, (vertices[SpriteBatch.Y1] + vertices[SpriteBatch.Y4])/2
+                );
+        shapeRenderer.rect(mSprite.getBoundingRectangle().x,mSprite.getBoundingRectangle().y,mSprite.getBoundingRectangle().width,mSprite.getBoundingRectangle().height);
+        shapeRenderer.end();
+        Gdx.app.log("Arrow", Arrays.toString(mSprite.getVertices()));*/
     }
-
     @Override
     public void update(float dt) {
         //arkasindaki animasyonlar her kosulda devam etmeli.
