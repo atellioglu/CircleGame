@@ -19,6 +19,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.tll.circles.dialog.Dialog;
@@ -57,12 +58,12 @@ public class GameState extends InputAdapter implements Screen {
     //test icin
     private ShapeRenderer shapeRenderer;
     private SpriteBatch menuItemBatch = new SpriteBatch();
-    // TODO: 18/09/17 Arka planda hata var tum ekrani kaplamiyor!!
     private OrthogonalTiledMapRenderer tiledMapRenderer;
     private MyGdxGame game;
     private State state;
     private Dialog dialog;
     private static Skill mSkill = Skill.NONE;
+    private SpriteBatch backgroundBatch;
     public static Skill getSkill(){
         return mSkill;
     }
@@ -73,8 +74,10 @@ public class GameState extends InputAdapter implements Screen {
         mSkill = skill;
         this.game = game;
         this.levelIndex = levelIndex;
+        //float aspectRatio = (float)Gdx.graphics.getHeight()/(float)Gdx.graphics.getWidth();
         camera = new OrthographicCamera();
-        viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
+        viewport = new ExtendViewport(MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
+        backgroundBatch = new SpriteBatch();
         loader = new TmxMapLoader();
         tiledMap = loader.load(String.format(Locale.ENGLISH,"levels/level%d.tmx",levelIndex));
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
@@ -87,6 +90,7 @@ public class GameState extends InputAdapter implements Screen {
         createHud();
         PreferenceHandler.saveCurrentLevel(levelIndex);
         state = State.RUNNING;
+        game.getAdListener().hideAd();
     }
     @Override
     public void render(float delta) {
@@ -96,15 +100,10 @@ public class GameState extends InputAdapter implements Screen {
         Gdx.gl.glClearColor(46f/255,46f/255,46f/255,1f);
         //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT| GL20.GL_DEPTH_BUFFER_BIT |(Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
         sb.setProjectionMatrix(camera.combined);
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-        shapeRenderer.setColor(43f/255f,48/255f,49/255f,0.7f);
-        for(int i =0;i<MyGdxGame.WIDTH;i+=120){
-            shapeRenderer.line(i,0,i,MyGdxGame.HEIGHT);
-        }
-        for(int i =0;i<MyGdxGame.HEIGHT;i+=120){
-            shapeRenderer.line(0,i,MyGdxGame.WIDTH,i);
-        }
-        shapeRenderer.end();
+        backgroundBatch.begin();
+        backgroundBatch.draw(AssetManager.background,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        backgroundBatch.end();
+
         tiledMapRenderer.render();
         sb.begin();
         for(int i =0;i<elements.size();i++){
@@ -380,11 +379,9 @@ public class GameState extends InputAdapter implements Screen {
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height, true);
-
         camera.position.set(camera.viewportWidth / 2, camera.viewportHeight / 2, 0);
         barriers.getRenderer().setProjectionMatrix(viewport.getCamera().combined);
         shapeRenderer.setProjectionMatrix(viewport.getCamera().combined);
-
     }
 
     @Override

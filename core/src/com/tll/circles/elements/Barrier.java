@@ -33,6 +33,10 @@ public class Barrier extends Element {
 
         rectangles.add(rectangle);
     }
+    private float alpha =1f;
+    public void setAlpha(float alpha){
+        this.alpha = alpha;
+    }
     public ShapeRenderer getRenderer(){
         return renderer;
     }
@@ -40,7 +44,7 @@ public class Barrier extends Element {
     @Override
     public void render(SpriteBatch sb) {
         renderer.begin(ShapeRenderer.ShapeType.Filled);
-        renderer.setColor(0.09f,0.89f,0.933f,1f);
+        renderer.setColor(0.09f,0.89f,0.933f,alpha);
         for(int i =0;i<rectangles.size();i++){
             Rectangle rec = rectangles.get(i);
             if(rec.getWidth() > rec.getHeight()){

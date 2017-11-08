@@ -1,23 +1,23 @@
 [
     {
-        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\burhanboz\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 51,
-                    "endOffset": 102
+                    "endColumn": 40,
+                    "endOffset": 91
                 },
                 "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml",
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 57,
-                        "endColumn": 51,
-                        "endOffset": 104
+                        "startOffset": 56,
+                        "endColumn": 40,
+                        "endOffset": 92
                     }
                 }
             },
@@ -25,58 +25,13 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 107,
+                    "startOffset": 96,
                     "endLine": 10,
                     "endColumn": 12,
-                    "endOffset": 565
+                    "endOffset": 554
                 },
                 "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 19,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 484
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 51,
-                    "endOffset": 102
-                },
-                "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 51,
-                        "endOffset": 102
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 107,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 565
-                },
-                "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\styles.xml",
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -94,30 +49,71 @@
         "map": [
             {
                 "to": {
-                    "startLine": 2,
+                    "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 100,
-                    "endColumn": 51,
-                    "endOffset": 147
+                    "startOffset": 689,
+                    "endColumn": 66,
+                    "endOffset": 751
                 },
                 "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 51,
-                        "endOffset": 102
-                    }
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/version.xml"
                 }
             },
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 152,
+                    "startOffset": 756,
+                    "endColumn": 41,
+                    "endOffset": 793
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/res/values/admob_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 798,
+                    "endColumn": 51,
+                    "endOffset": 845
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 850,
+                    "endColumn": 91,
+                    "endOffset": 937
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/auth_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 942,
+                    "endColumn": 87,
+                    "endOffset": 1025
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/auth_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1030,
                     "endColumn": 164,
-                    "endOffset": 312
+                    "endOffset": 1190
                 },
                 "from": {
                     "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/generated/fabric/res/debug/values/com_crashlytics_build_id.xml",
@@ -132,23 +128,448 @@
             },
             {
                 "to": {
-                    "startLine": 4,
+                    "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 317,
-                    "endLine": 11,
-                    "endColumn": 12,
-                    "endOffset": 775
+                    "startOffset": 1195,
+                    "endColumn": 156,
+                    "endOffset": 1347
                 },
                 "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 17,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 475
-                    }
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1352,
+                    "endColumn": 144,
+                    "endOffset": 1492
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1497,
+                    "endColumn": 108,
+                    "endOffset": 1601
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1606,
+                    "endColumn": 231,
+                    "endOffset": 1833
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1838,
+                    "endColumn": 125,
+                    "endOffset": 1959
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1964,
+                    "endColumn": 180,
+                    "endOffset": 2140
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 2145,
+                    "endColumn": 124,
+                    "endOffset": 2265
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2270,
+                    "endColumn": 138,
+                    "endOffset": 2404
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2409,
+                    "endColumn": 123,
+                    "endOffset": 2528
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2533,
+                    "endColumn": 212,
+                    "endOffset": 2741
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 2746,
+                    "endColumn": 214,
+                    "endOffset": 2956
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 2961,
+                    "endColumn": 122,
+                    "endOffset": 3079
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 3084,
+                    "endColumn": 164,
+                    "endOffset": 3244
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 3249,
+                    "endColumn": 93,
+                    "endOffset": 3338
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 3343,
+                    "endColumn": 136,
+                    "endOffset": 3475
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 3480,
+                    "endColumn": 140,
+                    "endOffset": 3616
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 3621,
+                    "endColumn": 89,
+                    "endOffset": 3706
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 3711,
+                    "endColumn": 147,
+                    "endOffset": 3854
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 3859,
+                    "endColumn": 102,
+                    "endOffset": 3957
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 3962,
+                    "endColumn": 150,
+                    "endOffset": 4108
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 4113,
+                    "endColumn": 91,
+                    "endOffset": 4200
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 4205,
+                    "endColumn": 110,
+                    "endOffset": 4311
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 4316,
+                    "endColumn": 218,
+                    "endOffset": 4530
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 4535,
+                    "endColumn": 94,
+                    "endOffset": 4625
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 4630,
+                    "endColumn": 104,
+                    "endOffset": 4730
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 4735,
+                    "endColumn": 180,
+                    "endOffset": 4911
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 4916,
+                    "endColumn": 124,
+                    "endOffset": 5036
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 5041,
+                    "endColumn": 174,
+                    "endOffset": 5211
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 5216,
+                    "endColumn": 104,
+                    "endOffset": 5316
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 5321,
+                    "endColumn": 62,
+                    "endOffset": 5379
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/res/values/common_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 5384,
+                    "endColumn": 88,
+                    "endOffset": 5468
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/res/values/admob_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 5473,
+                    "endColumn": 71,
+                    "endOffset": 5540
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/res/values/admob_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 5545,
+                    "endColumn": 43,
+                    "endOffset": 5584
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/res/values/admob_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 5589,
+                    "endColumn": 95,
+                    "endOffset": 5680
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/res/values/admob_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 5685,
+                    "endColumn": 58,
+                    "endOffset": 5739
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/res/values/admob_strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 5744,
+                    "endLine": 56,
+                    "endColumn": 12,
+                    "endOffset": 6202
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/res/values/styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 6207,
+                    "endLine": 64,
+                    "endColumn": 10,
+                    "endOffset": 6626
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/res/values/admob_iap_style.xml"
                 }
             }
         ]
@@ -203,24 +624,24 @@
         ]
     },
     {
-        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\burhanboz\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 40,
-                    "endOffset": 91
+                    "endColumn": 51,
+                    "endOffset": 102
                 },
                 "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\strings.xml",
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 56,
-                        "endColumn": 40,
-                        "endOffset": 92
+                        "startOffset": 57,
+                        "endColumn": 51,
+                        "endOffset": 104
                     }
                 }
             },
@@ -228,13 +649,95 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 96,
+                    "startOffset": 107,
                     "endLine": 10,
                     "endColumn": 12,
-                    "endOffset": 554
+                    "endOffset": 565
                 },
                 "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\burhanboz\\CircleGame\\android\\res\\values\\styles.xml",
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 19,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 484
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 51,
+                        "endOffset": 102
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 565
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\styles.xml"
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 51,
+                        "endOffset": 102
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 565
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -242,6 +745,51 @@
                         "endLine": 9,
                         "endColumn": 12,
                         "endOffset": 475
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 51,
+                        "endOffset": 104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 565
+                },
+                "from": {
+                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 19,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 484
                     }
                 }
             }
@@ -299,88 +847,6 @@
                 },
                 "from": {
                     "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 19,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 484
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 51,
-                    "endOffset": 102
-                },
-                "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 51,
-                        "endOffset": 102
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 107,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 565
-                },
-                "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\android\\res\\values\\styles.xml"
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 51,
-                    "endOffset": 102
-                },
-                "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 57,
-                        "endColumn": 51,
-                        "endOffset": 104
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 107,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 565
-                },
-                "from": {
-                    "file": "/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullahtellioglu\\Desktop\\CircleGame\\CircleGame\\C:\\Users\\abdullaht\\Desktop\\CircleGame\\android\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

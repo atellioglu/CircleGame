@@ -21,7 +21,7 @@ import java.util.List;
 public class Arrow extends Element{
     private static final float SHADOW_ANIMATION_DELTA = 0.20f;
     private static int VELOCITYX = 250,VELOCITYY = 250;
-    private static final int WIDTH = 48,HEIGHT = 48;
+    private static final int WIDTH = 48,HEIGHT = 60;
     //okun uzerinde bulundugu yuvarlak!
     private ActiveCircle mActiveCircle;
     public Vector3 velocity;
@@ -126,7 +126,6 @@ public class Arrow extends Element{
             if(lastAnimationUpdateDelta >= SHADOW_ANIMATION_DELTA){
                 //yeni bir tane cizilecek!
                 shadowAnimation.add(new ArrowShadow());
-                Gdx.app.log(Arrow.class.getSimpleName(),"New Animation");
                 lastAnimationUpdateDelta = 0;
             }
             //duz ilerleme!
@@ -139,7 +138,7 @@ public class Arrow extends Element{
             // TODO: 18/09/17  mActiveCircle.getWidth()/2-5  yerine daha duzgun bir cozum bul!
             Vector2 vec2 = calculateOrbit(
                     rotationAngle,
-                    mActiveCircle.getWidth()/2-5 ,
+                    mActiveCircle.getWidth()/2 * 92 / 100 - 5,
                     new Vector2(mActiveCircle.getX() + mActiveCircle.getWidth() / 2,
                     mActiveCircle.getY() + mActiveCircle.getHeight() / 2));
 

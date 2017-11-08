@@ -23,6 +23,9 @@ public class Star extends Element {
         mSprite.setPosition(rectangle.getX(),rectangle.getY());
         mSprite.setOriginCenter();
     }
+    public Sprite getSprite(){
+        return mSprite;
+    }
     public Star(Rectangle rectangle,int value){
         this(rectangle);
         setValue(value);

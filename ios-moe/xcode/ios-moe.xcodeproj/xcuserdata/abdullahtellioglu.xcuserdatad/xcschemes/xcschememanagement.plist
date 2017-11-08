@@ -9,7 +9,7 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>ios-moe.xcscheme_^#shared#^_</key>
+		<key>ios-moe.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -17,11 +17,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5863B87A1DA682C800E46B6A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>58C6F5231DA66CB600309CB6</key>
 		<dict>
 			<key>primary</key>

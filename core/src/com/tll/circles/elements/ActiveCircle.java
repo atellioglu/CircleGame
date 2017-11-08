@@ -1,5 +1,6 @@
 package com.tll.circles.elements;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,7 +22,7 @@ public class ActiveCircle extends Element {
     private float alpha = 1.0f;
     public ActiveCircle(Texture texture, Size size, Vector3 position){
         mSprite = new Sprite(texture);
-        mSprite.setSize(size.width, size.height);
+        mSprite.setSize(size.width * 108 / 100, size.height * 108 / 100);
         mSprite.setPosition(position.x, position.y);
         mSprite.setOriginCenter();
     }

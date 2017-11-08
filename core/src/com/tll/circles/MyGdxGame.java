@@ -16,6 +16,20 @@ public class MyGdxGame extends Game {
 		this.adListener = adListener;
 	}
 	public AdListener getAdListener(){
+		if(adListener==null){
+			Gdx.app.log("MyGdxGame","Ad listener is null");
+			adListener = new AdListener() {
+				@Override
+				public void showAd(int type) {
+
+				}
+
+				@Override
+				public void hideAd() {
+
+				}
+			};
+		}
 		return adListener;
 	}
 	public static boolean SOUND = true;
@@ -28,10 +42,10 @@ public class MyGdxGame extends Game {
 		}
 		AssetManager.menuStartButton.setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
 		AssetManager.star.setFilter(Texture.TextureFilter.MipMapLinearNearest, Texture.TextureFilter.Nearest);
-		//setScreen(new GameState(this,29));
+		//setScreen(new GameState(this,29,Skill.BARRIER_REMOVE));
 		//setScreen(new LevelPickState(this));
-		//setScreen(new GameState(this,PreferenceHandler.getCurrentLevel()));
-		setScreen(new MenuState(this));
+		setScreen(new GameState(this,PreferenceHandler.getCurrentLevel()));
+		//setScreen(new MenuState(this));
 	}
 
 	@Override

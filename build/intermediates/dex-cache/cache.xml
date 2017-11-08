@@ -3,24 +3,6 @@
 
     <item
         is-multidex="false"
-        jar="/Users/abdullahtellioglu/.android/build-cache/1e43b0c84a6854e3718cea336df6c116efa23bfb/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="7045152f3bd1870740b9bcb1cddff495e189774e">
-        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_9b932e737fc134a1333f2470a9c1d6bb7b74e0ff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/abdullahtellioglu/.android/build-cache/e682a70d47a3d5c5fb9915fb121b5b454f7e8ebc/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="005d20a198159b87f65812fc5c51b2d84c5eba0a">
-        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_55f8f89d4455c708f0c8a4de9300b8e455900724.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/abdullahtellioglu/.android/build-cache/c9f757aeb96c24ac41076e33739f246da7628ed8/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -30,21 +12,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/abdullahtellioglu/.android/build-cache/ea1d7c1238f75be55f610ba09440839efc63cfe1/output/jars/classes.jar"
+        jar="/Users/abdullahtellioglu/.android/build-cache/be0df13d942d2dfee0bdd79facd0351916006070/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
-        sha1="646439081688c43e04ec4aa7ba6915ddfdcc337f">
-        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_2129f62ae0103b8d38267c08c04df9bd80830543.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/core/build/libs/core-1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="3b58357c5809462f58d3a890deb5f971b026df7e">
-        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/core-1.0_263c120a89d993acaa4fd00c571ae182be46ee26.jar" />
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_01670f38650c72499f7f511049f7a4a50a9417d4.jar" />
     </item>
     <item
         is-multidex="false"
@@ -66,12 +39,84 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/abdullahtellioglu/.android/build-cache/7af84310301710af918b8a7fb338ace2a7ca909a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="27775d59b16610ac76f1b83693fedd9520396332">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_47f144e84d457c1a654a6368c3ec700d452b62e3.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/abdullahtellioglu/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.6/47d1e9b890e364ec28f128e9bb3b9a12a94c164/gdx-1.9.6.jar"
         jumboMode="false"
         optimize="true"
         revision="26.0.1"
         sha1="047d1e9b890e364ec28f128e9bb3b9a12a94c164">
         <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/gdx-1.9.6_423e619e4693e8baad93d08e9c0025a000cf10e1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.android/build-cache/be0df13d942d2dfee0bdd79facd0351916006070/output/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/internal_impl-22.2.0_d72268632afa471d1ecd9e4035c4f5d8dafa63c4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.android/build-cache/1e43b0c84a6854e3718cea336df6c116efa23bfb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7045152f3bd1870740b9bcb1cddff495e189774e">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_9b932e737fc134a1333f2470a9c1d6bb7b74e0ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.android/build-cache/e682a70d47a3d5c5fb9915fb121b5b454f7e8ebc/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="005d20a198159b87f65812fc5c51b2d84c5eba0a">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_55f8f89d4455c708f0c8a4de9300b8e455900724.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.android/build-cache/ea1d7c1238f75be55f610ba09440839efc63cfe1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="646439081688c43e04ec4aa7ba6915ddfdcc337f">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_2129f62ae0103b8d38267c08c04df9bd80830543.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/core/build/libs/core-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="65f94c9b07b2232d6cbe213e432428cb17c18307">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/core-1.0_263c120a89d993acaa4fd00c571ae182be46ee26.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/support-annotations-22.2.0_de6449d8ee4917e5f315227ee726d9379b886339.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/abdullahtellioglu/.android/build-cache/ed4b2b0dd400a49a689d5dc1eaa5381b58f298e7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="345a1b5cf5b144ce18ba6962bc66a7e2f26c1c1b">
+        <dex dex="/Users/abdullahtellioglu/Desktop/CircleGame/CircleGame/android/build/intermediates/pre-dexed/debug/classes_dd595262ae5af6b2831bc7e5bb368e26d205984a.jar" />
     </item>
     <item
         is-multidex="false"

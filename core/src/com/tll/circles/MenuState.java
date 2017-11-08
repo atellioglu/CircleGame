@@ -12,9 +12,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.utils.BufferUtils;
 import com.badlogic.gdx.utils.Scaling;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.nio.IntBuffer;
 
 /**
  * Created by burhanboz on 12/07/2017.
@@ -31,7 +35,7 @@ public class MenuState extends InputAdapter implements Screen {
         this.game = game;
         camera = new OrthographicCamera();
         camera.setToOrtho(false);
-        viewport = new ScalingViewport(Scaling.fillX,MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
+        viewport = new ExtendViewport(MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera);
         Gdx.input.setInputProcessor(this);
         startGameButton = new Sprite(AssetManager.menuStartButton);
         startGameButton.setSize(200,200);
@@ -48,6 +52,10 @@ public class MenuState extends InputAdapter implements Screen {
         starIcon.setAlpha(starAlpha);
         starText = String.valueOf(PreferenceHandler.getInt(PreferenceHandler.STAR_KEY,0));
         starTextFont = AssetManager.raviaBlue32;
+        IntBuffer buf = BufferUtils.newIntBuffer(16);
+        Gdx.gl.glGetIntegerv(GL20.GL_MAX_TEXTURE_SIZE, buf);
+        int maxSize = buf.get(0);
+        Gdx.app.log("Max Size ",String.valueOf(maxSize));
     }
     private boolean starFadeIn = true;
     private float starAlpha = 0f;
@@ -57,7 +65,7 @@ public class MenuState extends InputAdapter implements Screen {
     public void show() {
 
     }
-
+    private SpriteBatch backgroundBatch = new SpriteBatch();
     @Override
     public void render(float delta) {
         update(delta);
@@ -65,8 +73,11 @@ public class MenuState extends InputAdapter implements Screen {
         Gdx.gl.glClearColor(46f/255,46f/255,46f/255,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         sb.setProjectionMatrix(camera.combined);
+        backgroundBatch.begin();
+        backgroundBatch.draw(AssetManager.backgroundMenu,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        backgroundBatch.end();
+        /*
         sb.begin();
-        sb.draw(AssetManager.backgroundMenu,0,0,MyGdxGame.WIDTH,MyGdxGame.HEIGHT);
         startGameButton.draw(sb);
         levelPickButton.draw(sb);
         soundButton.draw(sb);
@@ -74,7 +85,7 @@ public class MenuState extends InputAdapter implements Screen {
         starTextFont.getData().setScale(0.50f);
         starTextFont.draw(sb,starText,starIcon.getX()+starIcon.getWidth()+10,starIcon.getY()+starIcon.getHeight()-15);
         starTextFont.getData().setScale(1f);
-        sb.end();
+        sb.end();*/
     }
     private void update(float dt){
         if(touchedDownSprite !=null){
